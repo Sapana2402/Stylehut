@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "fashion_carnival-CrQft1zX.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "fashion_carnival-CrQft1zX@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "fashion_carnival-CrQft1zX@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

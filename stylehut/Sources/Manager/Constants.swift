@@ -10,12 +10,26 @@ import Foundation
 struct k {
     static let allProductCellIdentifier = "ProductListCollectionViewCell"
     static let noDataFound = "No data found"
+    static let autoSliderCollectionViewCell = "AutoSliderCollectionViewCell"
     
     struct urls {
         static let privacyPolicyUrl = "https://www.myntra.com/privacypolicy"
         static let register = "https://stylehut-be.vercel.app/api/register"
         static let verifyOTP = "https://stylehut-be.vercel.app/api/verify-otp"
         static let getCategories = "https://stylehut-be.vercel.app/api/category-data"
+    }
+    
+    struct assets {
+        struct giftCard {
+            static let cashBack = "https://stylehut.vercel.app/assets/Payments-D-xdL-BY.gif"
+        }
+        
+        struct images {
+            static let fieldscouponsTextImage = "https://stylehut.vercel.app/assets/coupons-Dxg4FCVa.png"
+            static let couponsCodeOne = "https://stylehut.vercel.app/assets/coupon1-zFkVzmcC.png"
+            static let couponsCodeSecond = "https://stylehut.vercel.app/assets/coupon2-CyXmHw-q.png"
+            static let shopByCategoryImage = "https://stylehut.vercel.app/assets/shoup_by_category-CuvjA852.png"
+        }
     }
     
     struct httpMethods {
@@ -47,4 +61,21 @@ struct k {
     struct productDescriptionScreen {
         
     }
+    
+    
+    struct SliderItem {
+        let imageURL: String
+    }
+
+    
+    struct homeScreen {
+        static let autoSliderData: [SliderItem] = [
+            SliderItem(imageURL: "https://stylehut.vercel.app/assets/slide1-BHQmvDFI.png"),
+            SliderItem(imageURL: "https://stylehut.vercel.app/assets/slide2-TfW4P2cN.png"),
+            SliderItem(imageURL: "https://stylehut.vercel.app/assets/slide3-_sHO2rVu.png"),
+            SliderItem(imageURL: "https://stylehut.vercel.app/assets/slide4-go2o8uj4.png"),
+            SliderItem(imageURL: "https://stylehut.vercel.app/assets/slide5-CmP-icBn.png")
+        ]
+    }
+
 }
