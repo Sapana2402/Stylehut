@@ -43,4 +43,8 @@ struct k {
     struct subCategoryScreen {
         static let subCategoryTableViewCell = "SubCategoryTableViewCell"
     }
+    
+    struct productDescriptionScreen {
+        
+    }
 }
