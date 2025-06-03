@@ -13,10 +13,12 @@ struct k {
     static let autoSliderCollectionViewCell = "AutoSliderCollectionViewCell"
     
     struct urls {
-        static let privacyPolicyUrl = "https://www.myntra.com/privacypolicy"
-        static let register = "https://stylehut-be.vercel.app/api/register"
-        static let verifyOTP = "https://stylehut-be.vercel.app/api/verify-otp"
-        static let getCategories = "https://stylehut-be.vercel.app/api/category-data"
+        static let baseURL = ""
+               
+               static let privacyPolicyUrl = "https://www.myntra.com/privacypolicy"
+               static let register = "\(baseURL)/register"
+               static let verifyOTP = "\(baseURL)/verify-otp"
+               static let getCategories = "\(baseURL)/category-data"
     }
     
     struct assets {
