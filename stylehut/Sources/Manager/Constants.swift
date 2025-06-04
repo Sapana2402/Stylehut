@@ -13,7 +13,7 @@ struct k {
     static let autoSliderCollectionViewCell = "AutoSliderCollectionViewCell"
     
     struct urls {
-        static let baseURL = ""
+        static let baseURL = "https://stylehut-be.vercel.app/api"
                
                static let privacyPolicyUrl = "https://www.myntra.com/privacypolicy"
                static let register = "\(baseURL)/register"
@@ -78,6 +78,10 @@ struct k {
             SliderItem(imageURL: "https://stylehut.vercel.app/assets/slide4-go2o8uj4.png"),
             SliderItem(imageURL: "https://stylehut.vercel.app/assets/slide5-CmP-icBn.png")
         ]
+    }
+    
+    struct SubCategoryTypeScreen {
+        static let subCategoryTypeListCollectionViewCell = "SubCategoryTypeListCollectionViewCell"
     }
 
 }

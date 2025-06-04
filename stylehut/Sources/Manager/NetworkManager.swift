@@ -110,4 +110,27 @@ class NetworkManager {
             completion(false, "Something went wrong: \(error.localizedDescription)")
         }
     }
+    
+    class func getSubCategoriesTypeList(urlSting: String, compelation: @escaping([SubCategoryTypeProduct]?, String?)-> Void) async {
+        guard let url = URL(string: urlSting) else {
+            fatalError("Invalid URL")
+        }
+        print("Urlllll",url)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = k.httpMethods.get
+        request.timeoutInterval = 10
+        
+        print("Here 2")
+        do{
+            let (data,_) = try await URLSession.shared.data(for: request)
+            print("Abc====",data)
+            let decodedResponse = try JSONDecoder().decode(SubCategoryTypeModel.self, from: data)
+            print("dataaa",decodedResponse)
+            compelation(decodedResponse.items, nil)
+        }catch {
+            compelation(nil, "Something want wrong")
+        }
+    }
+    
 }

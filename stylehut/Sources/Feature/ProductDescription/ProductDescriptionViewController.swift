@@ -11,8 +11,6 @@ class ProductDescriptionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
     }
     
 
