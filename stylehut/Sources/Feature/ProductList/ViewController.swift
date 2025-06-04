@@ -19,6 +19,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var couponsCodeOne: UIImageView!
     @IBOutlet weak var autoSlider: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
+
+    @IBOutlet weak var trendingCollectionHeight: NSLayoutConstraint!
+    
+    
     var currentIndex = 0
        var sliderTimer: Timer?
     
@@ -103,6 +107,9 @@ class ViewController: UIViewController {
         trendingProductCollectionView.dataSource = self
         trendingProductCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
         trendingProductCollectionView.register(UINib(nibName: k.allProductCellIdentifier, bundle: nil), forCellWithReuseIdentifier: k.allProductCellIdentifier)
+        
+        trendingProductCollectionView.isScrollEnabled = false
+
     }
     
     func loadData() {
@@ -110,6 +117,8 @@ class ViewController: UIViewController {
                 await self.product.getProducts {
                     DispatchQueue.main.async {
                                   self.trendingProductCollectionView.reloadData()
+                        self.trendingProductCollectionView.layoutIfNeeded() // Ensure layout is calculated
+                                        self.trendingCollectionHeight.constant = self.trendingProductCollectionView.collectionViewLayout.collectionViewContentSize.height
                               }
 
                 }
@@ -118,73 +127,6 @@ class ViewController: UIViewController {
     }
 }
 
-//extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        product.productsData.count
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = trendingProductCollectionView.dequeueReusableCell(withReuseIdentifier: k.allProductCellIdentifier, for: indexPath) as! ProductListCollectionViewCell
-//        cell.setProductDetails(model: product.productsData[indexPath.row])
-//        return cell
-//    }
-//    
-//    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let padding: CGFloat = 10
-//        let itemsPerRow: CGFloat = 2
-//        let totalPadding = padding * (itemsPerRow + 1)
-//        let availableWidth = trendingProductCollectionView.frame.width - totalPadding
-//        let itemWidth = availableWidth / itemsPerRow
-//        let size = trendingProductCollectionView.frame.width
-//        return CGSize(width: itemWidth, height: itemWidth * 1.5) // Adjust height as needed
-//    }
-//
-//    
-////    func collectionView(_ collectionView: UICollectionView,
-////                        layout collectionViewLayout: UICollectionViewLayout,
-////                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-////        return 5
-////    }
-////
-////    func collectionView(_ collectionView: UICollectionView,
-////                        layout collectionViewLayout: UICollectionViewLayout,
-////                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-////        return 5
-////    }
-//
-//    func collectionView(_ collectionView: UICollectionView,
-//                        layout collectionViewLayout: UICollectionViewLayout,
-//                        insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-//    }
-//
-//    
-//}
-
-
-
-//extension ViewController : UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        k.homeScreen.autoSliderData.count
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = autoSlider.dequeueReusableCell(withReuseIdentifier: k.autoSliderCollectionViewCell, for: indexPath) as! AutoSliderCollectionViewCell
-//        let sliderItem = k.homeScreen.autoSliderData[indexPath.item]
-//        if let url = URL(string: sliderItem.imageURL){
-//            cell.posterImage.kf.setImage(with: url)
-//        }
-//        return cell
-//    }
-//    
-//    
-////    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-////        return CGSize(width: autoSlider.frame.width, height: autoSlider.frame.width)
-////    }
-//    
-//    
-//}
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 

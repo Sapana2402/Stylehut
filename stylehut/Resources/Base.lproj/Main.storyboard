@@ -43,7 +43,7 @@
                                 <rect key="frame" x="0.0" y="106" width="402" height="685"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vf2-PD-0nq">
-                                        <rect key="frame" x="0.0" y="0.0" width="402" height="1088.3333333333333"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="402" height="600.33333333333337"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rs0-4b-hkH">
                                                 <rect key="frame" x="0.0" y="0.0" width="402" height="32"/>
@@ -174,20 +174,20 @@
                                                     </pageControl>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trending Now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WeJ-oe-ten">
-                                                <rect key="frame" x="0.0" y="558" width="402" height="20.333333333333371"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9PE-Yh-Xz5">
-                                                <rect key="frame" x="0.0" y="588.33333333333337" width="402" height="500.00000000000011"/>
+                                                <rect key="frame" x="0.0" y="558" width="402" height="42.333333333333371"/>
                                                 <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   Trending Now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WeJ-oe-ten">
+                                                        <rect key="frame" x="0.0" y="0.0" width="402" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Yw-h0-zAu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="402" height="500"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <rect key="frame" x="0.0" y="30.333333333333371" width="402" height="12"/>
+                                                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="500" id="wv1-me-pJ7"/>
+                                                            <constraint firstAttribute="height" constant="12" id="wv1-me-pJ7"/>
                                                         </constraints>
                                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="S4X-fS-FOo">
                                                             <size key="itemSize" width="128" height="128"/>
@@ -207,6 +207,10 @@
                                                         </cells>
                                                     </collectionView>
                                                 </subviews>
+                                                <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="WeJ-oe-ten" firstAttribute="top" secondItem="9PE-Yh-Xz5" secondAttribute="top" constant="20" id="9zr-20-zmf"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                     </stackView>
@@ -239,6 +243,7 @@
                         <outlet property="couponsTextImage" destination="b8D-yo-X7G" id="PJ0-dC-gZ3"/>
                         <outlet property="gifView" destination="2ci-BE-Zr9" id="k7s-C3-ano"/>
                         <outlet property="pageControl" destination="54n-FM-37e" id="5uG-7d-OXb"/>
+                        <outlet property="trendingCollectionHeight" destination="wv1-me-pJ7" id="rsc-vM-Rap"/>
                         <outlet property="trendingProductCollectionView" destination="3Yw-h0-zAu" id="JfC-fA-yaV"/>
                     </connections>
                 </viewController>
@@ -259,7 +264,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AX6-VF-idh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4628" y="-175"/>
+            <point key="canvasLocation" x="4706" y="-382"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="38Z-W8-AjQ">
