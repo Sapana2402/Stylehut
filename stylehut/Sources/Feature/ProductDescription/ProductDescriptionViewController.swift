@@ -8,7 +8,11 @@
 import UIKit
 
 class ProductDescriptionViewController: UIViewController {
-
+    
+    var productID: Int?
+    let productDetailsViewModel = ProductDetailsViewModel()
+    @IBOutlet weak var productBrand: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

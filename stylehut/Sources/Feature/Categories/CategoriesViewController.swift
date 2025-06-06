@@ -134,14 +134,38 @@ extension CategoriesViewController : UICollectionViewDataSource,UICollectionView
         performSegue(withIdentifier: k.categoriesScreen.subCategoriesType, sender: self)
     }
     
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == k.categoriesScreen.subCategoriesType,
+//           let indexPath = subCategoriesList.indexPathsForSelectedItems?.first,
+//           let destinationVC = segue.destination as? SubCategoryViewController {
+//            let selectedSubCategory = subCategoreisTypeData[indexPath.row]
+////            destinationVC.subCategoryTypeData = selectedSubCategory.sub_category_types
+//            let selectedIndex = selectedIndex {
+//
+//             let selectedCategory = categorisViewModel.categoriesData[selectedIndex]
+//             let selectedSubCategory = subCategoreisTypeData[indexPath.row]
+//
+//             destinationVC.selectedCategoryId = selectedCategory.id
+//             destinationVC.selectedSubCategoryId = selectedSubCategory.id
+//             destinationVC.subCategoryTypeData = selectedSubCategory.sub_category_types
+//         }
+//        }
+//    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == k.categoriesScreen.subCategoriesType,
            let indexPath = subCategoriesList.indexPathsForSelectedItems?.first,
-           let destinationVC = segue.destination as? SubCategoryViewController {
+           let destinationVC = segue.destination as? SubCategoryViewController,
+           let selectedIndex = selectedIndex { // ✅ Safe unwrapping of optional
+
+            let selectedCategory = categorisViewModel.categoriesData[selectedIndex]
             let selectedSubCategory = subCategoreisTypeData[indexPath.row]
+
+            destinationVC.selectedCategoryId = selectedCategory.id
+            destinationVC.selectedSubCategoryId = selectedSubCategory.id
             destinationVC.subCategoryTypeData = selectedSubCategory.sub_category_types
         }
     }
+
 
 }
 

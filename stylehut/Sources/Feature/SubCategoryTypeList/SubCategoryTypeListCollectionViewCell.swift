@@ -19,6 +19,10 @@ class SubCategoryTypeListCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        posterImage.layer.cornerRadius = 10
+        posterImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        posterImage.clipsToBounds = true
+        
     }
 
 }

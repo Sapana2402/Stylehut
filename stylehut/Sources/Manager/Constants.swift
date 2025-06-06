@@ -13,12 +13,13 @@ struct k {
     static let autoSliderCollectionViewCell = "AutoSliderCollectionViewCell"
     
     struct urls {
-        static let baseURL = "https://stylehut-be.vercel.app/api"
+        static let baseURL = ""
                
                static let privacyPolicyUrl = "https://www.myntra.com/privacypolicy"
                static let register = "\(baseURL)/register"
                static let verifyOTP = "\(baseURL)/verify-otp"
                static let getCategories = "\(baseURL)/category-data"
+               static let getProductDetails = "\(baseURL)/product/67"
     }
     
     struct assets {
@@ -48,6 +49,8 @@ struct k {
     struct navigationTitles {
         static let navigateToOTP = "navigateToOTP"
         static let otpToHome = "otpToHome"
+        static let navigateToSubCategoriesTypeList = "subCategoriesTypeList"
+        static let navigateToProductDescription = "listToproductDescription"
     }
     
     struct categoriesScreen {

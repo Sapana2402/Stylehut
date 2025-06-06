@@ -47,12 +47,9 @@ class ViewController: UIViewController {
         pageControl.numberOfPages = k.homeScreen.autoSliderData.count
               pageControl.currentPage = 0
 
-              startAutoScroll()
-        
+        startAutoScroll()
         configure()
         loadData()
-        
-      
     }
 
     func startAutoScroll() {

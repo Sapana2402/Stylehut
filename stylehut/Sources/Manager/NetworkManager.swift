@@ -115,22 +115,35 @@ class NetworkManager {
         guard let url = URL(string: urlSting) else {
             fatalError("Invalid URL")
         }
-        print("Urlllll",url)
+        var request = URLRequest(url: url)
+        request.httpMethod = k.httpMethods.get
+        request.timeoutInterval = 20
+        do{
+            let (data,_) = try await URLSession.shared.data(for: request)
+            let decodedResponse = try JSONDecoder().decode(APIResponse.self, from: data)
+            compelation(decodedResponse.data.items, nil)
+
+        }catch {
+            print("Decoding error:", error.localizedDescription)
+            compelation(nil, "Something want wrong")
+        }
+    }
+    
+    class func getProductDetails(urlSting: String, compelation: @escaping(ProductDetailsData?, String?)-> Void) async {
+        guard let url = URL(string: urlSting) else {
+            fatalError("Invalid URL")
+        }
         
         var request = URLRequest(url: url)
         request.httpMethod = k.httpMethods.get
         request.timeoutInterval = 10
         
-        print("Here 2")
         do{
             let (data,_) = try await URLSession.shared.data(for: request)
-            print("Abc====",data)
-            let decodedResponse = try JSONDecoder().decode(SubCategoryTypeModel.self, from: data)
-            print("dataaa",decodedResponse)
-            compelation(decodedResponse.items, nil)
+            let decodedResponse = try JSONDecoder().decode(ProductDetailsAPIResponse.self, from: data)
+            compelation(decodedResponse.data, nil)
         }catch {
             compelation(nil, "Something want wrong")
         }
     }
-    
 }
