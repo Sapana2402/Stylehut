@@ -16,7 +16,10 @@ class SubCategoryTypeListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var discountPrice: UILabel!
     @IBOutlet weak var originalPrice: UILabel!
     @IBOutlet weak var productName: UILabel!
-    
+    @IBOutlet weak var wishListButton: UIButton!
+//    let subCategoryTypeViewModel = SubCategoryTypeViewModel()
+//    private var currentProduct: SubCategoryTypeProduct?
+    var wishlistToggleAction: (() -> Void)?
     override func awakeFromNib() {
         super.awakeFromNib()
         posterImage.layer.cornerRadius = 10
@@ -24,5 +27,36 @@ class SubCategoryTypeListCollectionViewCell: UICollectionViewCell {
         posterImage.clipsToBounds = true
         
     }
+    
+    func configure(with productData: SubCategoryTypeProduct) {
+//        self.currentProduct = productData
+           productName.text = productData.name
+           originalPrice.text = productData.price
 
+           let originalPriceValue = Double(productData.price) ?? 0.0
+           let discountPercentage = Double(productData.discount ?? 0)
+           let discountAmount = originalPriceValue * (discountPercentage / 100)
+           let finalPrice = originalPriceValue - discountAmount
+
+           discountPrice.text = String(format: "%.2f", finalPrice)
+           discount.text = "\(productData.discount ?? 0)% OFF"
+           brandName.text = productData.brand?.name
+
+        let wishListCount = productData.isInWishlist
+        print("wishListCount",wishListCount)
+        wishListButton.tintColor = wishListCount! ? .red : .white
+
+           if let imageUrl = URL(string: productData.image.first ?? "") {
+               posterImage.kf.setImage(with: imageUrl)
+           }
+       }
+
+
+    @IBAction func handleWishList(_ sender: Any) {
+//        guard var product = currentProduct else { return }
+//        print("product.isInWishlist",product.isInWishlist)
+//        product.isInWishlist = !(product.isInWishlist!)
+//        wishListButton.tintColor = product.isInWishlist! ? .red : .white
+        wishlistToggleAction?()
+    }
 }

@@ -87,10 +87,12 @@ class NetworkManager {
         request.timeoutInterval = 10
         
         let requestBody:[String: Any] = ["email": email,"otp": otp]
+        print("Json Body",requestBody)
         do{
             let jsonRequest =  try  JSONSerialization.data(withJSONObject: requestBody, options: [])
             request.httpBody = jsonRequest
             let (data, response) = try await URLSession.shared.data(for: request)
+            print("Check responseee",data,response)
             if let httpResponse = response as? HTTPURLResponse{
                 if httpResponse.statusCode ==  200{
                     let decoded = try JSONDecoder().decode(OTPResponse.self, from: data)
@@ -118,32 +120,36 @@ class NetworkManager {
         var request = URLRequest(url: url)
         request.httpMethod = k.httpMethods.get
         request.timeoutInterval = 20
+        if let token = AuthManager.shared.token {
+               request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+           }
         do{
             let (data,_) = try await URLSession.shared.data(for: request)
             let decodedResponse = try JSONDecoder().decode(APIResponse.self, from: data)
             compelation(decodedResponse.data.items, nil)
-
         }catch {
             print("Decoding error:", error.localizedDescription)
             compelation(nil, "Something want wrong")
         }
     }
     
-    class func getProductDetails(urlSting: String, compelation: @escaping(ProductDetailsData?, String?)-> Void) async {
-        guard let url = URL(string: urlSting) else {
-            fatalError("Invalid URL")
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = k.httpMethods.get
-        request.timeoutInterval = 10
-        
-        do{
-            let (data,_) = try await URLSession.shared.data(for: request)
-            let decodedResponse = try JSONDecoder().decode(ProductDetailsAPIResponse.self, from: data)
-            compelation(decodedResponse.data, nil)
-        }catch {
-            compelation(nil, "Something want wrong")
-        }
-    }
+    class func getProductDetails(urlSting: String) async -> ProductDetailsData? {
+          guard let url = URL(string: urlSting) else {
+              print("Invalid URL")
+              return nil
+          }
+          
+          var request = URLRequest(url: url)
+          request.httpMethod = k.httpMethods.get
+          request.timeoutInterval = 10
+          
+          do {
+              let (data, _) = try await URLSession.shared.data(for: request)
+              let decodedResponse = try JSONDecoder().decode(ProductDetailsAPIResponse.self, from: data)
+              return decodedResponse.data
+          } catch {
+              print("Error fetching product details: \(error)")
+              return nil
+          }
+      }
 }

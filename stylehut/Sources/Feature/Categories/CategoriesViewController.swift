@@ -27,6 +27,7 @@ class CategoriesViewController: UIViewController {
         if let layout = subCategoriesList.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.estimatedItemSize = .zero
         }
+        
         Task{
             await categorisViewModel.getCategories {
                 self.selectedIndex = 0

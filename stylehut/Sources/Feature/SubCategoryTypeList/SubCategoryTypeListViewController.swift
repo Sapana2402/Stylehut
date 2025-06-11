@@ -32,7 +32,6 @@ class SubCategoryTypeListViewController: UIViewController {
     }
     
     func loadData() {
-        print("Here")
         Task{
             await subCategoryTypeViewModel.getProducts(selectedCategoryId: selectedCategoryId!,selectedSubCategoryId: selectedSubCategoryId!,selectedSubCategoryTypeId: selectedSubCategoryTypeId!, compelation: {
                 DispatchQueue.main.async {
@@ -45,7 +44,6 @@ class SubCategoryTypeListViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == k.navigationTitles.navigateToProductDescription,
            let destinationVC = segue.destination as? ProductDescriptionViewController{
-            
             destinationVC.productID = selectedProduct
         }
          
@@ -61,20 +59,15 @@ extension SubCategoryTypeListViewController: UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let productData = subCategoryTypeViewModel.subCategoryTypeProductData[indexPath.row]
         
-        let originalPrice = Double(productData.price) ?? 0.0
-        let discountPercentage = Double(productData.discount ??  Int(0.0))
-        let discountAmount = originalPrice * (discountPercentage / 100)
-        let finalPrice = originalPrice - discountAmount
         
         let cell = productCollectionView.dequeueReusableCell(withReuseIdentifier: k.SubCategoryTypeScreen.subCategoryTypeListCollectionViewCell, for: indexPath) as! SubCategoryTypeListCollectionViewCell
-        cell.productName.text = productData.name
-        cell.originalPrice.text = productData.price
-        cell.discountPrice.text =  String(format: "%.2f", finalPrice)
-        cell.discount.text = "\(productData.discount ?? Int(0.0))% OFF"
-        cell.brandName.text = productData.brand?.name
-        if let imageUrl = URL(string: productData.image[0]) {
-            cell.posterImage.kf.setImage(with: imageUrl)
-        }
+        cell.configure(with: productData)
+        cell.wishlistToggleAction = {
+              var product = self.subCategoryTypeViewModel.subCategoryTypeProductData[indexPath.row]
+              product.isInWishlist = !(product.isInWishlist ?? false)
+              self.subCategoryTypeViewModel.subCategoryTypeProductData[indexPath.row] = product
+              collectionView.reloadItems(at: [indexPath])
+          }
         return cell
     }
     

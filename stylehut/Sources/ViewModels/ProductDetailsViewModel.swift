@@ -8,16 +8,15 @@
 import Foundation
 
 class ProductDetailsViewModel {
-    var productData : ProductDetailsData?
+    var productData: ProductDetailsData?
     
-    func getProducts(productId:Int,compelation: @escaping () -> Void) async {
+    func getProducts(productId: Int) async {
         let url = "\(k.urls.baseURL)/product/\(productId)"
-        await NetworkManager.getProductDetails(urlSting: url) { product, error in
-           if let products = product {
-               self.productData = products
-               compelation()
-            }
-            
+        if let products = await NetworkManager.getProductDetails(urlSting: url) {
+            self.productData = products
+        } else {
+            print("Failed to load product details")
+            self.productData = nil
         }
     }
     

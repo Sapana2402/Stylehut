@@ -66,6 +66,9 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="heart.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="handleWishList:" destination="gTV-IL-0wX" eventType="touchUpInside" id="O0o-zZ-xmy"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fdg-AN-YCS">
                                 <rect key="frame" x="7.9999999999999964" y="211" width="60.666666666666657" height="15"/>
@@ -141,6 +144,7 @@
                 <outlet property="originalPrice" destination="fKj-U5-srs" id="D9e-Xc-4ah"/>
                 <outlet property="posterImage" destination="Lbe-yW-SX9" id="6i0-fj-jUh"/>
                 <outlet property="productName" destination="Dg2-na-2ui" id="Z6t-Qc-Kmo"/>
+                <outlet property="wishListButton" destination="W2W-Xr-YPY" id="Xpd-1V-k3p"/>
             </connections>
             <point key="canvasLocation" x="270.2290076335878" y="99.295774647887328"/>
         </collectionViewCell>
