@@ -15,11 +15,9 @@ class SubCategoryTypeViewModel {
         
         await NetworkManager.getSubCategoriesTypeList(urlSting: url) { product, error in
            if let products = product {
-               print("Data====",products)
                self.subCategoryTypeProductData = products
                compelation()
             }
         }
     }
-    
 }

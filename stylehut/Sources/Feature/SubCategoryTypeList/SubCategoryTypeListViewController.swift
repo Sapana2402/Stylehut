@@ -62,12 +62,29 @@ extension SubCategoryTypeListViewController: UICollectionViewDelegate, UICollect
         
         let cell = productCollectionView.dequeueReusableCell(withReuseIdentifier: k.SubCategoryTypeScreen.subCategoryTypeListCollectionViewCell, for: indexPath) as! SubCategoryTypeListCollectionViewCell
         cell.configure(with: productData)
-        cell.wishlistToggleAction = {
-              var product = self.subCategoryTypeViewModel.subCategoryTypeProductData[indexPath.row]
-              product.isInWishlist = !(product.isInWishlist ?? false)
-              self.subCategoryTypeViewModel.subCategoryTypeProductData[indexPath.row] = product
-              collectionView.reloadItems(at: [indexPath])
-          }
+        cell.wishlistToggleAction = { [weak self] in
+            guard let self = self else { return }
+
+            var product = self.subCategoryTypeViewModel.subCategoryTypeProductData[indexPath.row]
+            let productID = product.id
+
+            Task {
+                let isAdded = await NetworkManager.wishListProduct(product_id: productID)
+                if isAdded {
+                    product.isInWishlist = !(product.isInWishlist ?? false)
+                    self.subCategoryTypeViewModel.subCategoryTypeProductData[indexPath.row] = product
+
+                    DispatchQueue.main.async {
+                        collectionView.reloadItems(at: [indexPath])
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.present(AuthManager.shared.showAlert(title: "", message: "Failed to update wishlist."), animated: true, completion: nil)
+                    }
+                }
+            }
+        }
+
         return cell
     }
     

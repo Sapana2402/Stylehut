@@ -20,6 +20,7 @@ struct k {
                static let verifyOTP = "\(baseURL)/verify-otp"
                static let getCategories = "\(baseURL)/category-data"
                static let getProductDetails = "\(baseURL)/product/67"
+               static let wishList = "\(baseURL)/wishlist"
     }
     
     struct assets {

@@ -17,8 +17,6 @@ class SubCategoryTypeListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var originalPrice: UILabel!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var wishListButton: UIButton!
-//    let subCategoryTypeViewModel = SubCategoryTypeViewModel()
-//    private var currentProduct: SubCategoryTypeProduct?
     var wishlistToggleAction: (() -> Void)?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +27,6 @@ class SubCategoryTypeListCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(with productData: SubCategoryTypeProduct) {
-//        self.currentProduct = productData
            productName.text = productData.name
            originalPrice.text = productData.price
 
@@ -42,9 +39,8 @@ class SubCategoryTypeListCollectionViewCell: UICollectionViewCell {
            discount.text = "\(productData.discount ?? 0)% OFF"
            brandName.text = productData.brand?.name
 
-        let wishListCount = productData.isInWishlist
-        print("wishListCount",wishListCount)
-        wishListButton.tintColor = wishListCount! ? .red : .white
+           let wishListCount = productData.isInWishlist
+           wishListButton.tintColor = wishListCount! ? .red : .white
 
            if let imageUrl = URL(string: productData.image.first ?? "") {
                posterImage.kf.setImage(with: imageUrl)
@@ -53,10 +49,6 @@ class SubCategoryTypeListCollectionViewCell: UICollectionViewCell {
 
 
     @IBAction func handleWishList(_ sender: Any) {
-//        guard var product = currentProduct else { return }
-//        print("product.isInWishlist",product.isInWishlist)
-//        product.isInWishlist = !(product.isInWishlist!)
-//        wishListButton.tintColor = product.isInWishlist! ? .red : .white
         wishlistToggleAction?()
     }
 }
