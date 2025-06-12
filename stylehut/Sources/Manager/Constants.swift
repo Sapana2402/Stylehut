@@ -86,6 +86,16 @@ struct k {
     
     struct SubCategoryTypeScreen {
         static let subCategoryTypeListCollectionViewCell = "SubCategoryTypeListCollectionViewCell"
+        static let sortByCellIdentifier = "SortByCell"
+        static let sortOptions: [(title: String, key: String)] = [
+            ("Recommended", "recommended"),
+            ("What's new", "new"),
+            ("Popularity", "popularity"),
+            ("Better discount", "discount"),
+            ("Price: High to Low", "price_high_to_low"),
+            ("Price: Low to High", "price_low_to_high"),
+            ("Customer rating", "rating")
+        ]
     }
 
 }

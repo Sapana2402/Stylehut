@@ -40,7 +40,7 @@ class SubCategoryTypeListCollectionViewCell: UICollectionViewCell {
            brandName.text = productData.brand?.name
 
            let wishListCount = productData.isInWishlist
-           wishListButton.tintColor = wishListCount! ? .red : .white
+        wishListButton.tintColor = wishListCount ?? false ? .red : .white
 
            if let imageUrl = URL(string: productData.image.first ?? "") {
                posterImage.kf.setImage(with: imageUrl)

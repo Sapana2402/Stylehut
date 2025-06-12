@@ -17,6 +17,7 @@ class SubCategoryTypeListViewController: UIViewController {
     var selectedSubCategoryTypeId: Int?
     var selectedProduct: Int = 0
     
+    lazy var mV = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SizeChartViewController")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,14 @@ class SubCategoryTypeListViewController: UIViewController {
         }
     }
 
+    @IBAction func handleSort(_ sender: UIButton) {
+        if let sheet = mV.sheetPresentationController {
+            sheet.detents = [.medium()]
+               sheet.prefersGrabberVisible = true
+           }
+           present(mV, animated: true)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == k.navigationTitles.navigateToProductDescription,
            let destinationVC = segue.destination as? ProductDescriptionViewController{
@@ -79,7 +88,11 @@ extension SubCategoryTypeListViewController: UICollectionViewDelegate, UICollect
                     }
                 } else {
                     DispatchQueue.main.async {
-                        self.present(AuthManager.shared.showAlert(title: "", message: "Failed to update wishlist."), animated: true, completion: nil)
+                        var message = "Failed to update wishlist."
+                       if AuthManager.shared.token == nil{
+                           message = "Login required to update wishlist."
+                        }
+                        self.present(AuthManager.shared.showAlert(title: "", message: message), animated: true, completion: nil)
                     }
                 }
             }

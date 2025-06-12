@@ -11,6 +11,7 @@ class ProductDescriptionViewController: UIViewController {
     
     var productID: Int?
     let productDetailsViewModel = ProductDetailsViewModel()
+
     
     @IBOutlet weak var productBrand: UILabel!
     @IBOutlet weak var productName: UILabel!
@@ -38,4 +39,8 @@ class ProductDescriptionViewController: UIViewController {
         }
     }
 
+    
+    @IBAction func handleSizeChart(_ sender: UIButton) {
+    
+    }
 }
