@@ -50,3 +50,25 @@ struct Meta: Codable {
     let total: Int
     let totalPages: Int
 }
+
+
+//Brand response
+
+// MARK: - Root API Response
+struct BrandResponse: Codable {
+    let status: Int
+    let success: Bool
+    let data: BrandData
+}
+
+// MARK: - Data Container
+struct BrandData: Codable {
+    let items: [BrandItem]
+}
+
+// MARK: - Brand Item
+struct BrandItem: Codable {
+    let id: Int
+    let name: String
+}
+

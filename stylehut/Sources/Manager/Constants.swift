@@ -21,6 +21,7 @@ struct k {
                static let getCategories = "\(baseURL)/category-data"
                static let getProductDetails = "\(baseURL)/product/67"
                static let wishList = "\(baseURL)/wishlist"
+               static let brand = "\(baseURL)/brand"
     }
     
     struct assets {
@@ -87,6 +88,7 @@ struct k {
     struct SubCategoryTypeScreen {
         static let subCategoryTypeListCollectionViewCell = "SubCategoryTypeListCollectionViewCell"
         static let sortByCellIdentifier = "SortByCell"
+        static let brandTableViewCell = "BrandTableViewCell"
         static let sortOptions: [(title: String, key: String)] = [
             ("Recommended", "recommended"),
             ("What's new", "new"),

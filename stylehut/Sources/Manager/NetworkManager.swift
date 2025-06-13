@@ -172,10 +172,32 @@ class NetworkManager {
               guard let httpResponse = response as? HTTPURLResponse else {
                   return false
               }
-
               return httpResponse.statusCode == 200
           } catch {
               return false
           }
     }
+    
+    class func getBrand(urlSting: String) async -> BrandData? {
+          guard let url = URL(string: urlSting) else {
+              print("Invalid URL")
+              return nil
+          }
+          
+          var request = URLRequest(url: url)
+          request.httpMethod = k.httpMethods.get
+          request.timeoutInterval = 10
+          if let token = AuthManager.shared.token {
+               request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+           }
+        
+          do {
+              let (data, _) = try await URLSession.shared.data(for: request)
+              let decodedResponse = try JSONDecoder().decode(BrandResponse.self, from: data)
+              return decodedResponse.data
+          } catch {
+              print("Error fetching product details: \(error)")
+              return nil
+          }
+      }
 }

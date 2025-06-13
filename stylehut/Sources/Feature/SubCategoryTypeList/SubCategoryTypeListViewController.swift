@@ -18,6 +18,7 @@ class SubCategoryTypeListViewController: UIViewController {
     var selectedProduct: Int = 0
     
     lazy var mV = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SizeChartViewController")
+    lazy var FilterController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FilterViewController")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,8 @@ class SubCategoryTypeListViewController: UIViewController {
                     self.productCollectionView.reloadData()
                 }
             })
+            
+            
         }
     }
 
@@ -48,6 +51,14 @@ class SubCategoryTypeListViewController: UIViewController {
                sheet.prefersGrabberVisible = true
            }
            present(mV, animated: true)
+    }
+    
+    @IBAction func handleFilter(_ sender: UIButton) {
+        if let sheet = FilterController.sheetPresentationController {
+            sheet.detents = [.medium(),.large()]
+               sheet.prefersGrabberVisible = true
+           }
+           present(FilterController, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
