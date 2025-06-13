@@ -14,7 +14,7 @@ class SizeChartViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         sortByList.dataSource = self
         sortByList.delegate = self
-        sortByList.isHidden = true
+//        sortByList.isHidden = true
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
