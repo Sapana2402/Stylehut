@@ -9,4 +9,5 @@ import UIKit
 
 class MoreColorsCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var posterImage: UIImageView!
 }

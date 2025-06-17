@@ -99,5 +99,10 @@ struct k {
             ("Customer rating", "rating")
         ]
     }
+    
+    struct productDetails {
+        static let moreColorsIndetiifer = "MoreColorsCollectionViewCell"
+        static let selectSizeIndetiifer = "SelectSizeCollectionViewCell"
+    }
 
 }
