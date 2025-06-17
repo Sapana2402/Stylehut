@@ -28,7 +28,7 @@ class RegisterViewController: UIViewController {
     
     @IBAction func handleRegisterUser(_ sender: UIButton) {
         if email.text!.isEmpty {
-            self.showAlert(title: "", message: k.validationMessages.emailRequired)
+            self.showAlert(title: "", message: k.validationMessages.emailRequired )
             return
         }
         if !AuthManager.shared.isValidEmail(email.text!) {
@@ -79,5 +79,4 @@ class RegisterViewController: UIViewController {
             self.view.isUserInteractionEnabled = true
         }
     }
-
 }

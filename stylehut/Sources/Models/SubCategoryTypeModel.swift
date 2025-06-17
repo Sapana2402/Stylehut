@@ -72,3 +72,10 @@ struct BrandItem: Codable {
     let name: String
 }
 
+struct ProductFilter {
+    var selectedBrandId: Int? 
+    var minPrice: Int
+    var maxPrice: Int
+    var minDiscount: Int
+    var maxDiscount: Int
+}

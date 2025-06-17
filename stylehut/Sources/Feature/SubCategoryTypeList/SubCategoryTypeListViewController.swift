@@ -17,8 +17,8 @@ class SubCategoryTypeListViewController: UIViewController {
     var selectedSubCategoryTypeId: Int?
     var selectedProduct: Int = 0
     
-    lazy var mV = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SizeChartViewController")
-    lazy var FilterController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FilterViewController")
+     var mV = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SizeChartViewController")
+     var FilterController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FilterViewController")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,7 @@ class SubCategoryTypeListViewController: UIViewController {
     }
     
     func loadData() {
+        print("It called")
         Task{
             await subCategoryTypeViewModel.getProducts(selectedCategoryId: selectedCategoryId!,selectedSubCategoryId: selectedSubCategoryId!,selectedSubCategoryTypeId: selectedSubCategoryTypeId!, compelation: {
                 DispatchQueue.main.async {
@@ -54,11 +55,21 @@ class SubCategoryTypeListViewController: UIViewController {
     }
     
     @IBAction func handleFilter(_ sender: UIButton) {
-        if let sheet = FilterController.sheetPresentationController {
-            sheet.detents = [.medium(),.large()]
-               sheet.prefersGrabberVisible = true
-           }
-           present(FilterController, animated: true)
+        guard let filterVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FilterViewController") as? FilterViewController else {
+                return
+            }
+        filterVC.currentFilter = subCategoryTypeViewModel.activeFilter
+        filterVC.onDismiss = { [weak self] filter in
+             guard let self = self else { return }
+            self.subCategoryTypeViewModel.applyFilter(filter)
+             self.loadData()
+         }
+            if let sheet = filterVC.sheetPresentationController {
+                sheet.detents = [.medium(), .large()]
+                sheet.prefersGrabberVisible = true
+            }
+
+            present(filterVC, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -81,8 +92,8 @@ extension SubCategoryTypeListViewController: UICollectionViewDelegate, UICollect
         
         
         let cell = productCollectionView.dequeueReusableCell(withReuseIdentifier: k.SubCategoryTypeScreen.subCategoryTypeListCollectionViewCell, for: indexPath) as! SubCategoryTypeListCollectionViewCell
-        cell.configure(with: productData)
-        cell.wishlistToggleAction = { [weak self] in
+           cell.configure(with: productData)
+           cell.wishlistToggleAction = { [weak self] in
             guard let self = self else { return }
 
             var product = self.subCategoryTypeViewModel.subCategoryTypeProductData[indexPath.row]
