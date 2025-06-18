@@ -34,15 +34,12 @@ class SubCategoryTypeListViewController: UIViewController {
     }
     
     func loadData() {
-        print("It called")
         Task{
             await subCategoryTypeViewModel.getProducts(selectedCategoryId: selectedCategoryId!,selectedSubCategoryId: selectedSubCategoryId!,selectedSubCategoryTypeId: selectedSubCategoryTypeId!, compelation: {
                 DispatchQueue.main.async {
                     self.productCollectionView.reloadData()
                 }
             })
-            
-            
         }
     }
 
@@ -76,6 +73,9 @@ class SubCategoryTypeListViewController: UIViewController {
         if segue.identifier == k.navigationTitles.navigateToProductDescription,
            let destinationVC = segue.destination as? ProductDescriptionViewController{
             destinationVC.productID = selectedProduct
+            destinationVC.selectedCategoryId = self.selectedCategoryId
+            destinationVC.selectedSubCategoryId = self.selectedSubCategoryId
+            destinationVC.selectedSubCategoryTypeId = self.selectedSubCategoryTypeId
         }
          
     }
@@ -119,7 +119,6 @@ extension SubCategoryTypeListViewController: UICollectionViewDelegate, UICollect
                 }
             }
         }
-
         return cell
     }
     
@@ -138,9 +137,7 @@ extension SubCategoryTypeListViewController: UICollectionViewDelegate, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-     
             return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        
    
     }
     

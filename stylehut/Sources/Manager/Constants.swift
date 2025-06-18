@@ -13,7 +13,7 @@ struct k {
     static let autoSliderCollectionViewCell = "AutoSliderCollectionViewCell"
     
     struct urls {
-        static let baseURL = ""
+        static let baseURL = "https://stylehut-be.vercel.app/api"
                
                static let privacyPolicyUrl = "https://www.myntra.com/privacypolicy"
                static let register = "\(baseURL)/register"
