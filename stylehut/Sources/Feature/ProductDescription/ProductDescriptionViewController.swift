@@ -23,6 +23,7 @@ class ProductDescriptionViewController: UIViewController {
     @IBOutlet weak var discount: UILabel!
     @IBOutlet weak var productSize: UICollectionView!
     
+    @IBOutlet weak var sizeCollectionviewHeight: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
@@ -42,6 +43,9 @@ class ProductDescriptionViewController: UIViewController {
                 self.productName.text = self.productDetails?.name ?? "N/A"
                 self.productPrice.text = self.productDetails?.price ?? "N/A"
                 self.discount.text = (String(describing: self.productDetails?.discount))
+                
+                self.productSize.layoutIfNeeded()
+                self.sizeCollectionviewHeight.constant = self.productSize.collectionViewLayout.collectionViewContentSize.height
             }
         }
     }
@@ -54,6 +58,10 @@ class ProductDescriptionViewController: UIViewController {
         productSize.delegate = self
         productSize.dataSource = self
         productSize.collectionViewLayout = UICollectionViewFlowLayout()
+        let sizeLayout = UICollectionViewFlowLayout()
+           sizeLayout.scrollDirection = .horizontal // <--- Important!
+           productSize.collectionViewLayout = sizeLayout
+        
     }
     
     @IBAction func handleSizeChart(_ sender: UIButton) {
@@ -79,6 +87,14 @@ extension ProductDescriptionViewController: UICollectionViewDelegateFlowLayout, 
             return cell
         }else if collectionView == productSize{
             let cell = productSize.dequeueReusableCell(withReuseIdentifier: k.productDetails.selectSizeIndetiifer, for: indexPath) as! SelectSizeCollectionViewCell
+            let sizeInfo = productDetails?.size_quantities[indexPath.row]
+            cell.label.text = sizeInfo?.size_data.size
+            if let quantity = sizeInfo?.quantity, quantity > 0 && quantity < 4 {
+                cell.leftItemView.isHidden = false
+                cell.leftItem.text = "\(quantity) left"
+            } else {
+                cell.leftItemView.isHidden = true
+            }
             return cell
         }
         return UICollectionViewCell()
@@ -88,7 +104,8 @@ extension ProductDescriptionViewController: UICollectionViewDelegateFlowLayout, 
         if collectionView == moreColors{
             return CGSize(width: moreColors.frame.width/5, height: moreColors.frame.height)
         }else if collectionView == productSize{
-            return CGSize(width: 100, height: 100)
+            return CGSize(width: 50, height: 50)
+
         }
         return CGSize.zero
     
