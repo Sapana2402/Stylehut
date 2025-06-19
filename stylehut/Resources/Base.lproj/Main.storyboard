@@ -19,6 +19,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.93333333330000001" green="0.37254901959999998" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.93333333330000001" green="0.37254901959999998" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="vEA-Nk-19Z" kind="relationship" relationship="viewControllers" id="QQl-Zh-G8H"/>
@@ -1213,7 +1214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d6x-mp-H4H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="807" y="1180"/>
+            <point key="canvasLocation" x="1475" y="1241"/>
         </scene>
         <!--Verification View Controller-->
         <scene sceneID="q1C-mH-LWK">
@@ -1323,7 +1324,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sD8-OW-Hj5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1581" y="1179"/>
+            <point key="canvasLocation" x="2451" y="1258"/>
         </scene>
         <!--Profile-->
         <scene sceneID="aPS-Iw-dnv">
@@ -1839,21 +1840,57 @@
             </objects>
             <point key="canvasLocation" x="4705.9701492537315" y="425.62929061784894"/>
         </scene>
-        <!--Fav-->
+        <!--Wish List-->
         <scene sceneID="V2R-fH-frw">
             <objects>
-                <viewController id="eg8-ge-cZF" sceneMemberID="viewController">
+                <viewController id="eg8-ge-cZF" customClass="WishListViewController" customModule="stylehut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sn4-tV-ZPG">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WGf-jK-eHG">
+                                <rect key="frame" x="0.0" y="62" width="402" height="729"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="t9b-4C-8RV">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Evy-xl-6ZB" customClass="WishListCollectionViewCell" customModule="stylehut" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="VGO-Vc-Gwb">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="eg8-ge-cZF" id="Ocd-O3-fdo"/>
+                                    <outlet property="delegate" destination="eg8-ge-cZF" id="FnM-hc-nmS"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="aEG-9E-vu5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aEG-9E-vu5" firstAttribute="trailing" secondItem="WGf-jK-eHG" secondAttribute="trailing" id="B4I-xI-10y"/>
+                            <constraint firstItem="WGf-jK-eHG" firstAttribute="top" secondItem="aEG-9E-vu5" secondAttribute="top" id="LEK-vV-Cdc"/>
+                            <constraint firstItem="WGf-jK-eHG" firstAttribute="leading" secondItem="aEG-9E-vu5" secondAttribute="leading" id="MxT-c1-DXZ"/>
+                            <constraint firstItem="aEG-9E-vu5" firstAttribute="bottom" secondItem="WGf-jK-eHG" secondAttribute="bottom" id="U2M-Tc-ryT"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Fav" image="heart.fill" catalog="system" id="7j3-zA-TPm"/>
+                    <tabBarItem key="tabBarItem" title="Wish List" image="heart.fill" catalog="system" id="7j3-zA-TPm"/>
+                    <connections>
+                        <outlet property="wishListCollectionView" destination="WGf-jK-eHG" id="g8i-lE-bEG"/>
+                        <segue destination="9FE-Op-feW" kind="show" identifier="WishListToLogin" id="haQ-8H-Xyh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zGU-oL-W0R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2060" y="529"/>
+            <point key="canvasLocation" x="2060" y="464"/>
         </scene>
         <!--Home-->
         <scene sceneID="KxA-3j-M9O">
@@ -1894,6 +1931,9 @@
             <point key="canvasLocation" x="3172" y="426"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="haQ-8H-Xyh"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Signup poster" width="166.66667175292969" height="67.333335876464844"/>
         <image name="SubCategories" width="170.66667175292969" height="170.66667175292969"/>

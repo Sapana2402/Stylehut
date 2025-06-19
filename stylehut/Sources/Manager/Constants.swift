@@ -54,6 +54,7 @@ struct k {
         static let otpToHome = "otpToHome"
         static let navigateToSubCategoriesTypeList = "subCategoriesTypeList"
         static let navigateToProductDescription = "listToproductDescription"
+        static let wishListToLogin = "WishListToLogin"
     }
     
     struct categoriesScreen {
@@ -107,4 +108,7 @@ struct k {
         static let imageIndetiifer = "ImageIndetiiferCollectionViewCell"
     }
 
+    struct wishListScreen {
+        static let wishListCollectionViewCellIdentifier = "WishListCollectionViewCell"
+    }
 }
