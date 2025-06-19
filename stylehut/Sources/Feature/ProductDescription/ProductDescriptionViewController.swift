@@ -9,6 +9,7 @@ import UIKit
 
 class ProductDescriptionViewController: UIViewController {
     var productID: Int?
+    var sizeQuantityId: Int?
     let productDetailsViewModel = ProductDetailsViewModel()
     let test = SubCategoryTypeListViewController()
     var productDetails:ProductDetailsData?
@@ -17,6 +18,8 @@ class ProductDescriptionViewController: UIViewController {
     var selectedSubCategoryId: Int?
     var selectedSubCategoryTypeId: Int?
     
+    @IBOutlet weak var selectSizeView: UIStackView!
+    @IBOutlet weak var moreColorView: UIStackView!
     @IBOutlet weak var moreColors: UICollectionView!
     @IBOutlet weak var productBrand: UILabel!
     @IBOutlet weak var productName: UILabel!
@@ -25,6 +28,8 @@ class ProductDescriptionViewController: UIViewController {
     @IBOutlet weak var discount: UILabel!
     @IBOutlet weak var productSize: UICollectionView!
     @IBOutlet weak var productDescription: UILabel!
+    @IBOutlet weak var addToCartLabel: UIButton!
+    
     @IBOutlet weak var sizeCollectionviewHeight: NSLayoutConstraint!
     @IBOutlet weak var similarProducts: UICollectionView!
     @IBOutlet weak var similarProductsHeight: NSLayoutConstraint!
@@ -56,9 +61,16 @@ class ProductDescriptionViewController: UIViewController {
                 self.productSize.layoutIfNeeded()
                 self.sizeCollectionviewHeight.constant = self.productSize.collectionViewLayout.collectionViewContentSize.height
 
+                self.moreColorView.isHidden = self.productDetails?.relatedProducts.isEmpty ?? true
+
+                self.selectSizeView.isHidden = self.productDetails?.size_quantities.isEmpty ?? true
+                
+                
             }
             await subCategoryTypeViewModel.getProducts(selectedCategoryId: selectedCategoryId!,selectedSubCategoryId: selectedSubCategoryId!,selectedSubCategoryTypeId: selectedSubCategoryTypeId!, compelation: {
+              
                 DispatchQueue.main.async {
+                    print("subCategoryTypeViewModel.subCategoryTypeProductData.",self.subCategoryTypeViewModel.subCategoryTypeProductData)
                     self.similarProducts.reloadData()
                     self.similarProducts.layoutIfNeeded()
                     self.similarProductsHeight.constant = self.similarProducts.collectionViewLayout.collectionViewContentSize.height
@@ -98,6 +110,41 @@ class ProductDescriptionViewController: UIViewController {
     @IBAction func handleSizeChart(_ sender: UIButton) {
     
     }
+    
+    
+    @IBAction func handleAddToCart(_ sender: UIButton) {
+        if !AuthManager.shared.isUserLoggedIn() {
+            let alert = AuthManager.shared.showAlert(title: "", message: "Login required to add to cart.")
+            self.present(alert, animated: true)
+            return
+        }
+        
+        if productDetails?.size_quantities.count != 0 ,sizeQuantityId == nil {
+            let alert = AuthManager.shared.showAlert(title: "", message: "Select size")
+            self.present(alert, animated: true)
+            return
+        }
+        Task{
+            let addToCart = await NetworkManager.addToCart(product_id: productID!, size_quantity_id: sizeQuantityId ?? 0)
+            if addToCart {
+                addToCartLabel.titleLabel?.text = "AddedToBart"
+                print("Added")
+            }else{
+                let alert = AuthManager.shared.showAlert(title: "", message: "Failed to update cart.")
+                self.present(alert, animated: true)
+            }
+        }
+            
+       
+
+    }
+    
+    var filteredSimilarProducts: [SubCategoryTypeProduct] {
+        return subCategoryTypeViewModel.subCategoryTypeProductData.filter {
+            $0.id != self.productID
+        }
+    }
+
 }
 
 extension ProductDescriptionViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -107,7 +154,7 @@ extension ProductDescriptionViewController: UICollectionViewDelegateFlowLayout, 
         }else if collectionView == productSize{
             return productDetails?.size_quantities.count ?? 0
         }else if collectionView == similarProducts{
-            return subCategoryTypeViewModel.subCategoryTypeProductData.count
+            return filteredSimilarProducts.count
         }else if collectionView == productImageSlider{
             return productDetails?.image.count ?? 0
         }
@@ -132,7 +179,7 @@ extension ProductDescriptionViewController: UICollectionViewDelegateFlowLayout, 
             }
             return cell
         }else if collectionView == similarProducts{
-            let productData = subCategoryTypeViewModel.subCategoryTypeProductData[indexPath.row]
+            let productData = filteredSimilarProducts[indexPath.row]
             let cell = similarProducts.dequeueReusableCell(withReuseIdentifier: k.SubCategoryTypeScreen.subCategoryTypeListCollectionViewCell, for: indexPath) as! SubCategoryTypeListCollectionViewCell
                cell.configure(with: productData)
                cell.wishListButton.isHidden = true
@@ -170,6 +217,13 @@ extension ProductDescriptionViewController: UICollectionViewDelegateFlowLayout, 
             return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 10)
         }
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("dataa====",productDetails?.size_quantities[indexPath.row].id ?? 0)
+        if collectionView == productSize{
+            sizeQuantityId = productDetails?.size_quantities[indexPath.row].id
+        }
     }
 }
 

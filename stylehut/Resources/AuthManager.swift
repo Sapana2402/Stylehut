@@ -29,6 +29,11 @@ class AuthManager{
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         return alert
     }
+    
+    func isUserLoggedIn() -> Bool {
+        return token != nil
+    }
+
 
 
 }

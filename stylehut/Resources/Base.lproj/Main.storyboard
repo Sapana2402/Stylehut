@@ -599,19 +599,22 @@
                                                             </collectionView>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5Od-eQ-LBK">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Od-eQ-LBK">
                                                         <rect key="frame" x="0.0" y="818.66666666666663" width="402" height="34.333333333333371"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n3Z-cq-131">
-                                                                <rect key="frame" x="0.0" y="0.0" width="196" height="34.333333333333336"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="201" height="34.333333333333336"/>
                                                                 <color key="backgroundColor" red="0.93333333330000001" green="0.37254901959999998" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="bag" catalog="system" title="ADD TO BAG" imagePadding="5">
                                                                     <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="handleAddToCart:" destination="pLP-LO-Y3M" eventType="touchUpInside" id="GS5-dQ-kEC"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXI-Ls-KJP">
-                                                                <rect key="frame" x="206" y="0.0" width="196" height="34.333333333333336"/>
+                                                                <rect key="frame" x="201" y="0.0" width="201" height="34.333333333333336"/>
                                                                 <color key="tintColor" red="0.93333333330000001" green="0.37254901959999998" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" title="WISHLIST" imagePadding="5"/>
@@ -727,7 +730,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="wfW-MI-VMR"/>
                     <connections>
+                        <outlet property="addToCartLabel" destination="n3Z-cq-131" id="Rs6-dw-2D9"/>
                         <outlet property="discount" destination="5Gb-LH-kTj" id="IMU-sm-kNw"/>
+                        <outlet property="moreColorView" destination="zOG-EH-bg8" id="kRq-4J-dGg"/>
                         <outlet property="moreColors" destination="rnc-sC-2tt" id="i5P-0L-oMP"/>
                         <outlet property="productBrand" destination="6UT-W3-gC0" id="ZmC-Lm-Psa"/>
                         <outlet property="productDescription" destination="2RK-vv-YB8" id="gUw-ee-ob7"/>
@@ -736,6 +741,7 @@
                         <outlet property="productName" destination="c32-Ql-jdV" id="7Pg-Yt-b8a"/>
                         <outlet property="productPrice" destination="nt8-hb-hea" id="6Tr-zp-a80"/>
                         <outlet property="productSize" destination="5Qo-74-qBb" id="ix9-9m-tww"/>
+                        <outlet property="selectSizeView" destination="f71-af-oTT" id="Og8-YH-g89"/>
                         <outlet property="similarProducts" destination="kFS-7p-gYo" id="GWy-Me-uR5"/>
                         <outlet property="similarProductsHeight" destination="3hk-it-aKN" id="4BZ-qH-DfO"/>
                         <outlet property="sizeCollectionviewHeight" destination="Uv2-2j-EwL" id="CSG-Gp-p6F"/>

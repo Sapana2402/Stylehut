@@ -22,6 +22,7 @@ struct k {
                static let getProductDetails = "\(baseURL)/product/67"
                static let wishList = "\(baseURL)/wishlist"
                static let brand = "\(baseURL)/brand"
+               static let addToCart = "\(baseURL)/cart"
     }
     
     struct assets {
@@ -103,6 +104,7 @@ struct k {
     struct productDetails {
         static let moreColorsIndetiifer = "MoreColorsCollectionViewCell"
         static let selectSizeIndetiifer = "SelectSizeCollectionViewCell"
+        static let imageIndetiifer = "ImageIndetiiferCollectionViewCell"
     }
 
 }

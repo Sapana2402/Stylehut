@@ -200,4 +200,29 @@ class NetworkManager {
               return nil
           }
       }
+    
+    class func addToCart(product_id: Int,size_quantity_id: Int) async -> Bool {
+        guard let url = URL(string: k.urls.addToCart) else {
+            fatalError("Invalid URL")
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = k.httpMethods.post
+        request.timeoutInterval = 10
+        if let token = AuthManager.shared.token {
+               request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+        let requestBody = ["product_id": product_id,"quantity":1,"size_quantity_id" : size_quantity_id]
+        
+        do {
+              request.httpBody = try JSONSerialization.data(withJSONObject: requestBody, options: [])
+              let (_, response) = try await URLSession.shared.data(for: request)
+              guard let httpResponse = response as? HTTPURLResponse else {
+                  return false
+              }
+              return httpResponse.statusCode == 200
+          } catch {
+              return false
+          }
+    }
 }
