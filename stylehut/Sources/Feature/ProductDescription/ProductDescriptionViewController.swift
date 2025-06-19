@@ -28,7 +28,7 @@ class ProductDescriptionViewController: UIViewController {
     @IBOutlet weak var sizeCollectionviewHeight: NSLayoutConstraint!
     @IBOutlet weak var similarProducts: UICollectionView!
     @IBOutlet weak var similarProductsHeight: NSLayoutConstraint!
-    
+    @IBOutlet weak var productImageSlider: UICollectionView!
     
     let subCategoryTypeViewModel = SubCategoryTypeViewModel()
     
@@ -46,6 +46,7 @@ class ProductDescriptionViewController: UIViewController {
             DispatchQueue.main.async {
                 self.moreColors.reloadData()
                 self.productSize.reloadData()
+                self.productImageSlider.reloadData()
                 self.productBrand.text = self.productDetails?.brand.name ?? "N/A"
                 self.productName.text = self.productDetails?.name ?? "N/A"
                 self.productPrice.text = self.productDetails?.price ?? "N/A"
@@ -83,6 +84,15 @@ class ProductDescriptionViewController: UIViewController {
         similarProducts.dataSource = self
         similarProducts.collectionViewLayout = UICollectionViewFlowLayout()
         similarProducts.register(UINib(nibName: k.SubCategoryTypeScreen.subCategoryTypeListCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: k.SubCategoryTypeScreen.subCategoryTypeListCollectionViewCell)
+        
+        //Image slider
+        productImageSlider.delegate = self
+        productImageSlider.dataSource = self
+        productImageSlider.collectionViewLayout = UICollectionViewFlowLayout()
+        let sizeLayout1 = UICollectionViewFlowLayout()
+        sizeLayout1.scrollDirection = .horizontal
+        productImageSlider.collectionViewLayout = sizeLayout1
+        productImageSlider.showsHorizontalScrollIndicator = false
     }
     
     @IBAction func handleSizeChart(_ sender: UIButton) {
@@ -98,6 +108,8 @@ extension ProductDescriptionViewController: UICollectionViewDelegateFlowLayout, 
             return productDetails?.size_quantities.count ?? 0
         }else if collectionView == similarProducts{
             return subCategoryTypeViewModel.subCategoryTypeProductData.count
+        }else if collectionView == productImageSlider{
+            return productDetails?.image.count ?? 0
         }
         return 0
     }
@@ -125,6 +137,11 @@ extension ProductDescriptionViewController: UICollectionViewDelegateFlowLayout, 
                cell.configure(with: productData)
                cell.wishListButton.isHidden = true
             return cell
+        } else if collectionView == productImageSlider{
+            let cell = productImageSlider.dequeueReusableCell(withReuseIdentifier: k.productDetails.imageIndetiifer, for: indexPath) as! ImageIndetiiferCollectionViewCell
+            
+            cell.sliderImage.kf.setImage(with: URL(string: productDetails?.image[indexPath.row] ?? ""))
+            return cell
         }
         return UICollectionViewCell()
     }
@@ -141,7 +158,9 @@ extension ProductDescriptionViewController: UICollectionViewDelegateFlowLayout, 
             let availableWidth = collectionView.frame.width - totalPadding
             let itemWidth = availableWidth / itemsPerRow
         return CGSize(width: itemWidth, height: itemWidth * 1.7)
-            }
+        }else if collectionView == productImageSlider{
+            return CGSize(width: productImageSlider.frame.width-36, height: productImageSlider.frame.height)
+        }
         return CGSize.zero
     
     }

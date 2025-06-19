@@ -359,20 +359,38 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="400" id="Ixz-TJ-bAw"/>
                                                         </constraints>
-                                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lTZ-N2-SkH">
-                                                            <size key="itemSize" width="128" height="128"/>
+                                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lTZ-N2-SkH">
+                                                            <size key="itemSize" width="402" height="400"/>
                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="UrQ-mf-k5R">
-                                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageIndetiiferCollectionViewCell" id="UrQ-mf-k5R" customClass="ImageIndetiiferCollectionViewCell" customModule="stylehut" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="402" height="400"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="J2L-yO-Q86">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="402" height="400"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MvY-C5-8oH">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="402" height="400"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="400" id="Shv-0v-7o8"/>
+                                                                            </constraints>
+                                                                        </imageView>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="bottom" secondItem="MvY-C5-8oH" secondAttribute="bottom" id="07z-7S-nh2"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="MvY-C5-8oH" secondAttribute="trailing" id="Vy8-uO-jGV"/>
+                                                                        <constraint firstItem="MvY-C5-8oH" firstAttribute="top" secondItem="J2L-yO-Q86" secondAttribute="top" id="jlt-2l-9Qb"/>
+                                                                        <constraint firstItem="MvY-C5-8oH" firstAttribute="leading" secondItem="J2L-yO-Q86" secondAttribute="leading" id="z6Q-2n-C9H"/>
+                                                                    </constraints>
                                                                 </collectionViewCellContentView>
+                                                                <size key="customSize" width="402" height="400"/>
+                                                                <connections>
+                                                                    <outlet property="sliderImage" destination="MvY-C5-8oH" id="Jru-c4-6cT"/>
+                                                                </connections>
                                                             </collectionViewCell>
                                                         </cells>
                                                     </collectionView>
@@ -676,15 +694,6 @@
                                                     </stackView>
                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mkx-xS-YGS">
                                                         <rect key="frame" x="0.0" y="1525.6666666666667" width="402" height="128"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHS-dk-H8Z">
-                                                                <rect key="frame" x="180" y="53.333333333333371" width="42" height="21"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                 </subviews>
@@ -723,6 +732,7 @@
                         <outlet property="productBrand" destination="6UT-W3-gC0" id="ZmC-Lm-Psa"/>
                         <outlet property="productDescription" destination="2RK-vv-YB8" id="gUw-ee-ob7"/>
                         <outlet property="productDiscountPrice" destination="rSX-8g-x7v" id="UyG-Hc-Ckg"/>
+                        <outlet property="productImageSlider" destination="BEZ-As-S6S" id="XYH-w8-dRO"/>
                         <outlet property="productName" destination="c32-Ql-jdV" id="7Pg-Yt-b8a"/>
                         <outlet property="productPrice" destination="nt8-hb-hea" id="6Tr-zp-a80"/>
                         <outlet property="productSize" destination="5Qo-74-qBb" id="ix9-9m-tww"/>
