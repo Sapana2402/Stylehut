@@ -121,7 +121,7 @@ struct ProductDetailsSizeData: Codable {
     let name: String
     let has_size_chart: Bool
     let is_cm: Bool
-    let type: String
+    let type: String?
     let custom_size_id: String
     let create_at: String
     let updated_at: String
