@@ -274,4 +274,27 @@ class NetworkManager {
               return false
           }
     }
+    
+    class func getCartProduct(urlSting: String) async -> CartData? {
+          guard let url = URL(string: urlSting) else {
+              print("Invalid URL")
+              return nil
+          }
+          
+          var request = URLRequest(url: url)
+          request.httpMethod = k.httpMethods.get
+          request.timeoutInterval = 10
+          if let token = AuthManager.shared.token {
+               request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+           }
+        
+          do {
+              let (data, _) = try await URLSession.shared.data(for: request)
+              let decodedResponse = try JSONDecoder().decode(CartResponse.self, from: data)
+              return decodedResponse.data
+          } catch {
+              print("Error fetching product details: \(error)")
+              return nil
+          }
+      }
 }

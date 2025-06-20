@@ -43,9 +43,11 @@ class WishListViewController: UIViewController, UICollectionViewDelegate,UIColle
 
     
     func configure()  {
-        wishListCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
-        wishListCollectionView.register(UINib(nibName: k.wishListScreen.wishListCollectionViewCellIdentifier, bundle: nil), forCellWithReuseIdentifier: k.wishListScreen.wishListCollectionViewCellIdentifier)
-        Task{
+        DispatchQueue.main.async {
+            self.wishListCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
+            self.wishListCollectionView.register(UINib(nibName: k.wishListScreen.wishListCollectionViewCellIdentifier, bundle: nil), forCellWithReuseIdentifier: k.wishListScreen.wishListCollectionViewCellIdentifier)
+        }
+            Task{
             await wishListViewModel.getWishList()
             DispatchQueue.main.async {
                 self.wishListCollectionView.reloadData()
@@ -71,6 +73,7 @@ class WishListViewController: UIViewController, UICollectionViewDelegate,UIColle
                                if let index = self.wishListViewModel.wishListData?.items.firstIndex(where: {
                                    $0.id == wishListProduct.id
                                }) {
+                                   print("index",index)
                                    self.wishListViewModel.wishListData?.items.remove(at: index)
                                    self.wishListCollectionView.performBatchUpdates({
                                        self.wishListCollectionView.deleteItems(at: [IndexPath(row: index, section: 0)])

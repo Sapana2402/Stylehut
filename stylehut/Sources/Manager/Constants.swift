@@ -111,4 +111,8 @@ struct k {
     struct wishListScreen {
         static let wishListCollectionViewCellIdentifier = "WishListCollectionViewCell"
     }
+    
+    struct cartScreen {
+        static let cartTableViewCell = "CartTableViewCell"
+    }
 }
