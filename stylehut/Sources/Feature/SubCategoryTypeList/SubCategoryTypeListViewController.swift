@@ -22,6 +22,7 @@ class SubCategoryTypeListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        LoaderView.shared.show()
         configure()
         loadData()
     }
@@ -38,6 +39,7 @@ class SubCategoryTypeListViewController: UIViewController {
             await subCategoryTypeViewModel.getProducts(selectedCategoryId: selectedCategoryId!,selectedSubCategoryId: selectedSubCategoryId!,selectedSubCategoryTypeId: selectedSubCategoryTypeId!, compelation: {
                 DispatchQueue.main.async {
                     self.productCollectionView.reloadData()
+                    LoaderView.shared.hide()
                 }
             })
         }

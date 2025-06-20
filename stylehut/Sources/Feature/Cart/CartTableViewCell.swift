@@ -34,6 +34,5 @@ class CartTableViewCell: UITableViewCell {
         discount.text = "\(productDetails.product.discount)%OFF"
         withoutDiscountPrice.text = productDetails.product.price
         cartImage.kf.setImage(with: URL(string: productDetails.product.image[0])!)
-//        size.titleLabel?.text = productDetails.product
     }
 }

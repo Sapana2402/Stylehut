@@ -80,7 +80,7 @@
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="cart" catalog="system"/>
                                                                 <connections>
-                                                                    <segue destination="MIr-Kj-QNc" kind="show" id="9hF-Iv-yN1"/>
+                                                                    <segue destination="IRc-Tj-xpY" kind="show" id="9hF-Iv-yN1"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVa-1c-2DD">
@@ -399,7 +399,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ud1-gK-i2U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4656.7164179104475" y="-511.44164759725396"/>
+            <point key="canvasLocation" x="5576.119402985074" y="-511.44164759725396"/>
         </scene>
         <!--Sub Category Type List View Controller-->
         <scene sceneID="nrV-NY-l1G">
@@ -2078,6 +2078,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bci-6W-wTr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3172" y="426"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="REj-vX-A2v">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IRc-Tj-xpY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="ZNY-0j-aNw"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZVj-zv-5lb">
+                        <rect key="frame" x="0.0" y="62" width="402" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MIr-Kj-QNc" kind="relationship" relationship="rootViewController" id="5kp-lX-SQh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tHW-1h-xTE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4656.7164179104475" y="-511.44164759725396"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

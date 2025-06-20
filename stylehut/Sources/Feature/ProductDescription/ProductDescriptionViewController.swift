@@ -39,6 +39,7 @@ class ProductDescriptionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        LoaderView.shared.show()
         loadData()
         configureCollection()
     }
@@ -64,7 +65,7 @@ class ProductDescriptionViewController: UIViewController {
                 self.moreColorView.isHidden = self.productDetails?.relatedProducts.isEmpty ?? true
 
                 self.selectSizeView.isHidden = self.productDetails?.size_quantities.isEmpty ?? true
-                
+                LoaderView.shared.hide()
                 
             }
             await subCategoryTypeViewModel.getProducts(selectedCategoryId: selectedCategoryId!,selectedSubCategoryId: selectedSubCategoryId!,selectedSubCategoryTypeId: selectedSubCategoryTypeId!, compelation: {

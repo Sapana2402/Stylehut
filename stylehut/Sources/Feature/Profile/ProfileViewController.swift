@@ -16,6 +16,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var loginView: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
+       
 
         registerBtn.layer.borderWidth = 1
            registerBtn.layer.borderColor = UIColor(red: 0xDE/255, green: 0xDE/255, blue: 0xDF/255, alpha: 1).cgColor

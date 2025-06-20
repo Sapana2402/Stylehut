@@ -14,6 +14,8 @@ class CartViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     @IBOutlet weak var cartHeight: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
+        LoaderView.shared.show()
+        self.navigationItem.hidesBackButton = false
         cartListTabelView.register(UINib(nibName: k.cartScreen.cartTableViewCell, bundle: nil), forCellReuseIdentifier: k.cartScreen.cartTableViewCell)
         cartListTabelView.isScrollEnabled = false
 
@@ -23,7 +25,8 @@ class CartViewController: UIViewController, UITableViewDelegate,UITableViewDataS
                 self.cartListTabelView.reloadData()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     self.cartListTabelView.layoutIfNeeded()
-                    self.cartHeight.constant = self.cartListTabelView.contentSize.height 
+                    self.cartHeight.constant = self.cartListTabelView.contentSize.height
+                    LoaderView.shared.hide()
                 }
             }
         }

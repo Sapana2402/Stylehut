@@ -18,6 +18,7 @@ class CategoriesViewController: UIViewController {
     let categorisViewModel = CategoriesViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        LoaderView.shared.show()
         sideCategoriesList.dataSource = self
         sideCategoriesList.delegate = self
         subCategoriesList.delegate = self
@@ -37,6 +38,14 @@ class CategoriesViewController: UIViewController {
                     self.sideCategoriesList.reloadData()
                     self.subCategoriesList.reloadData()
                     self.updateCollectionViewBackground()
+                    LoaderView.shared.hide()
+                    UIView.animate(withDuration: 0.6,
+                                   delay: 0,
+                                   usingSpringWithDamping: 0.6,
+                                   initialSpringVelocity: 0.5,
+                                   options: [.curveEaseInOut],
+                                   animations: {
+                        self.posterImage.transform = CGAffineTransform.identity},completion: nil)
                 }
                 
             }
@@ -46,13 +55,7 @@ class CategoriesViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        UIView.animate(withDuration: 0.6,
-                       delay: 0,
-                       usingSpringWithDamping: 0.6,
-                       initialSpringVelocity: 0.5,
-                       options: [.curveEaseInOut],
-                       animations: {
-            self.posterImage.transform = CGAffineTransform.identity},completion: nil)
+  
     }
 
     
