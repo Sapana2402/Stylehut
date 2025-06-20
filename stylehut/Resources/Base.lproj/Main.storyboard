@@ -1840,7 +1840,7 @@
             </objects>
             <point key="canvasLocation" x="4705.9701492537315" y="425.62929061784894"/>
         </scene>
-        <!--Wish List-->
+        <!--WishList-->
         <scene sceneID="V2R-fH-frw">
             <objects>
                 <viewController id="eg8-ge-cZF" customClass="WishListViewController" customModule="stylehut" customModuleProvider="target" sceneMemberID="viewController">
@@ -1882,7 +1882,7 @@
                             <constraint firstItem="aEG-9E-vu5" firstAttribute="bottom" secondItem="WGf-jK-eHG" secondAttribute="bottom" id="U2M-Tc-ryT"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Wish List" image="heart.fill" catalog="system" id="7j3-zA-TPm"/>
+                    <tabBarItem key="tabBarItem" title="WishList" image="heart.fill" catalog="system" id="7j3-zA-TPm"/>
                     <connections>
                         <outlet property="wishListCollectionView" destination="WGf-jK-eHG" id="g8i-lE-bEG"/>
                         <segue destination="9FE-Op-feW" kind="show" identifier="WishListToLogin" id="haQ-8H-Xyh"/>

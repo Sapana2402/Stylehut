@@ -10,7 +10,7 @@ import UIKit
 class WishListViewController: UIViewController, UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
   
     @IBOutlet weak var wishListCollectionView: UICollectionView!
-    let wishListViewModel = WishListViewModel()
+    var wishListViewModel = WishListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +61,27 @@ class WishListViewController: UIViewController, UICollectionViewDelegate,UIColle
         let cell = wishListCollectionView.dequeueReusableCell(withReuseIdentifier: k.wishListScreen.wishListCollectionViewCellIdentifier, for: indexPath) as! WishListCollectionViewCell
         let wishListProduct = (wishListViewModel.wishListData?.items[indexPath.row])!
         cell.configure(wishListProduct: wishListProduct)
+        cell.handleRemoveFromList = { [weak self] in
+            guard let self = self else { return }
+               print("Removed item with ID: \(wishListProduct.id)")
+            Task{
+                let response =  await NetworkManager.removeFromWishList(product_id: wishListProduct.products.id)
+                if response {
+                           DispatchQueue.main.async {
+                               if let index = self.wishListViewModel.wishListData?.items.firstIndex(where: {
+                                   $0.id == wishListProduct.id
+                               }) {
+                                   self.wishListViewModel.wishListData?.items.remove(at: index)
+                                   self.wishListCollectionView.performBatchUpdates({
+                                       self.wishListCollectionView.deleteItems(at: [IndexPath(row: index, section: 0)])
+                                   }, completion: nil)
+                               }
+                           }
+                }else{
+                    print("Failed to remove from wishlist.")
+                }
+            }
+           }
         return cell
     }
 

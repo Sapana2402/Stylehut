@@ -15,6 +15,7 @@ class WishListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var withoutDiscountPrice: UILabel!
     @IBOutlet weak var discount: UILabel!
     @IBOutlet weak var withDiscountPrice: UILabel!
+    var handleRemoveFromList: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,4 +33,9 @@ class WishListCollectionViewCell: UICollectionViewCell {
     }
     @IBAction func handleAddToBag(_ sender: UIButton) {
     }
+    
+    @IBAction func handleRemoveFromWishList(_ sender: Any) {
+        handleRemoveFromList?()
+    }
+    
 }

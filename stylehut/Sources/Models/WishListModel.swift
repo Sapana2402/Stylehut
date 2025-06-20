@@ -15,7 +15,7 @@ struct wishlistResponse: Codable {
 }
 
 struct wishlistData: Codable {
-    let items: [wishlistItem]
+    var items: [wishlistItem]
     let meta: wishlistMeta
 }
 
