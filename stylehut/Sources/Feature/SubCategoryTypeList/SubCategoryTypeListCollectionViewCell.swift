@@ -30,11 +30,7 @@ class SubCategoryTypeListCollectionViewCell: UICollectionViewCell {
            productName.text = productData.name
            originalPrice.text = productData.price
 
-           let originalPriceValue = Double(productData.price) ?? 0.0
-           let discountPercentage = Double(productData.discount ?? 0)
-           let discountAmount = originalPriceValue * (discountPercentage / 100)
-           let finalPrice = originalPriceValue - discountAmount
-
+        let finalPrice = AuthManager.shared.getDiscountedPrice(price: productData.price, discount: productData.discount)
            discountPrice.text = String(format: "%.2f", finalPrice)
            discount.text = "\(productData.discount ?? 0)% OFF"
            brandName.text = productData.brand?.name

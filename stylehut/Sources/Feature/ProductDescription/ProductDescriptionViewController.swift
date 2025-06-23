@@ -55,9 +55,12 @@ class ProductDescriptionViewController: UIViewController {
                 self.productImageSlider.reloadData()
                 self.productBrand.text = self.productDetails?.brand.name ?? "N/A"
                 self.productName.text = self.productDetails?.name ?? "N/A"
-                self.productPrice.text = self.productDetails?.price ?? "N/A"
+                self.productPrice.text = self.productDetails!.price + " " ?? "N/A"
+                let finalPrice = AuthManager.shared.getDiscountedPrice(price: self.productDetails?.price, discount: self.productDetails?.discount)
+                self.productDiscountPrice.text = String(format: "%.2f", finalPrice) + " "
                 self.productDescription.text = self.productDetails?.description ?? "N/A"
-                self.discount.text = (String(describing: self.productDetails?.discount))
+                self.discount.text = "(\(String(describing: self.productDetails?.discount ?? 0))%OFF)"
+                
                 
                 self.productSize.layoutIfNeeded()
                 self.sizeCollectionviewHeight.constant = self.productSize.collectionViewLayout.collectionViewContentSize.height
@@ -126,14 +129,17 @@ class ProductDescriptionViewController: UIViewController {
             return
         }
         Task{
+            LoaderView.shared.show()
             let addToCart = await NetworkManager.addToCart(product_id: productID!, size_quantity_id: sizeQuantityId ?? 0)
             if addToCart {
-                addToCartLabel.titleLabel?.text = "AddedToBart"
-                print("Added")
+                addToCartLabel.titleLabel?.text = "Added"
+                LoaderView.shared.hide()
             }else{
+                LoaderView.shared.hide()
                 let alert = AuthManager.shared.showAlert(title: "", message: "Failed to update cart.")
                 self.present(alert, animated: true)
             }
+           
         }
             
        

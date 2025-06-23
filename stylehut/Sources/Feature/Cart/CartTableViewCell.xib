@@ -168,7 +168,7 @@
                 <outlet property="withDiscountPrice" destination="wdU-ub-w8o" id="ONA-F6-bIV"/>
                 <outlet property="withoutDiscountPrice" destination="Cng-dh-GH6" id="6MN-Lb-B4z"/>
             </connections>
-            <point key="canvasLocation" x="41.221374045801525" y="39.08450704225352"/>
+            <point key="canvasLocation" x="41.221374045801525" y="38.380281690140848"/>
         </tableViewCell>
     </objects>
     <resources>

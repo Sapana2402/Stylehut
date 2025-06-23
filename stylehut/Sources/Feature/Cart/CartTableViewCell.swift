@@ -29,6 +29,8 @@ class CartTableViewCell: UITableViewCell {
     }
     
     func configData(productDetails: CartItem) {
+        let finalPrice = AuthManager.shared.getDiscountedPrice(price: productDetails.product.price, discount: productDetails.product.discount)
+        withDiscountPrice.text = "\(finalPrice)"
         labelOne.text = productDetails.product.brand.name
         labelTwo.text = productDetails.product.name
         discount.text = "\(productDetails.product.discount)%OFF"

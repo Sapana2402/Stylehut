@@ -15,6 +15,7 @@ class ProductListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var wishList: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,6 +24,7 @@ class ProductListCollectionViewCell: UICollectionViewCell {
     }
     
     func setUpUI() {
+        wishList.isHidden = true
         mainView.layer.cornerRadius = 12
         mainView.layer.masksToBounds = false
         

@@ -29,6 +29,8 @@ class WishListCollectionViewCell: UICollectionViewCell {
         }
         productName.text = wishListProduct.products.name
         discount.text = String(wishListProduct.products.discount) + "%"
+        let finalPrice = AuthManager.shared.getDiscountedPrice(price: wishListProduct.products.price, discount: wishListProduct.products.discount)
+        withDiscountPrice.text = String(format: "%.2f", finalPrice)
         
     }
     @IBAction func handleAddToBag(_ sender: UIButton) {

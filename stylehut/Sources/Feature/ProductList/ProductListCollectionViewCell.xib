@@ -82,6 +82,7 @@
                 <outlet property="productImage" destination="xId-HA-Egg" id="aFX-Og-Mwo"/>
                 <outlet property="productName" destination="Nll-57-sAN" id="237-Nc-bca"/>
                 <outlet property="productPrice" destination="KCx-bT-hoP" id="py9-12-QSO"/>
+                <outlet property="wishList" destination="4oa-Lo-hXy" id="not-U9-DsW"/>
             </connections>
             <point key="canvasLocation" x="-776.33587786259534" y="-84.154929577464799"/>
         </collectionViewCell>

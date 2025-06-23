@@ -44,6 +44,11 @@ class AuthManager{
         UserDefaults.standard.synchronize()
     }
 
-
+    func getDiscountedPrice(price: Any?, discount: Any?) -> Double {
+        let originalPrice = Double("\(price ?? 0)") ?? 0.0
+        let discountPercentage = Double("\(discount ?? 0)") ?? 0.0
+        let discountAmount = originalPrice * (discountPercentage / 100)
+        return originalPrice - discountAmount
+    }
 
 }
