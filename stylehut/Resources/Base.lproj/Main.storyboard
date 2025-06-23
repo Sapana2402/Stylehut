@@ -488,7 +488,7 @@
         <!--Product Description View Controller-->
         <scene sceneID="Gpu-56-AAb">
             <objects>
-                <viewController id="pLP-LO-Y3M" customClass="ProductDescriptionViewController" customModule="stylehut" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductDescriptionViewController" id="pLP-LO-Y3M" customClass="ProductDescriptionViewController" customModule="stylehut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LF3-nL-ac0">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

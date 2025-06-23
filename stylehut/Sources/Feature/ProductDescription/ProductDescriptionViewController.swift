@@ -17,7 +17,8 @@ class ProductDescriptionViewController: UIViewController {
     var selectedCategoryId: Int?
     var selectedSubCategoryId: Int?
     var selectedSubCategoryTypeId: Int?
-    
+    var selectedSizeIndex: IndexPath? = nil  
+
     @IBOutlet weak var selectSizeView: UIStackView!
     @IBOutlet weak var moreColorView: UIStackView!
     @IBOutlet weak var moreColors: UICollectionView!
@@ -184,6 +185,14 @@ extension ProductDescriptionViewController: UICollectionViewDelegateFlowLayout, 
             } else {
                 cell.leftItemView.isHidden = true
             }
+            
+            if selectedSizeIndex == indexPath {
+                cell.circularView.backgroundColor = UIColor.lightGray
+                  cell.label.textColor = .white
+              } else {
+                  cell.circularView.backgroundColor = .clear
+                  cell.label.textColor = .black
+              }
             return cell
         }else if collectionView == similarProducts{
             let productData = filteredSimilarProducts[indexPath.row]
@@ -227,9 +236,22 @@ extension ProductDescriptionViewController: UICollectionViewDelegateFlowLayout, 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("dataa====",productDetails?.size_quantities[indexPath.row].id ?? 0)
         if collectionView == productSize{
             sizeQuantityId = productDetails?.size_quantities[indexPath.row].id
+                   selectedSizeIndex = indexPath
+                   collectionView.reloadData()
+        } else if collectionView == similarProducts {
+            let selectedProduct = filteredSimilarProducts[indexPath.row]
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let productVC = storyboard.instantiateViewController(withIdentifier: "ProductDescriptionViewController") as? ProductDescriptionViewController {
+                productVC.productID = selectedProduct.id
+                productVC.selectedCategoryId = self.selectedCategoryId
+                productVC.selectedSubCategoryId = self.selectedSubCategoryId
+                productVC.selectedSubCategoryTypeId = self.selectedSubCategoryTypeId
+                
+                self.navigationController?.pushViewController(productVC, animated: true)
+            }
         }
     }
 }
