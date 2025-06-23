@@ -1783,6 +1783,7 @@
                         <outlet property="logOut" destination="SwJ-3Z-RHy" id="iP4-xJ-1Qp"/>
                         <outlet property="loginView" destination="TAl-2B-AMu" id="ZKC-F8-JQK"/>
                         <outlet property="registerBtn" destination="8gC-ka-yRB" id="z8s-1v-GV7"/>
+                        <outlet property="userEmaail" destination="G4h-hh-SUW" id="HKk-1a-icm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Gk-A5-b1E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2100,7 +2101,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="haQ-8H-Xyh"/>
+        <segue reference="eSc-lt-lb2"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Signup poster" width="166.66667175292969" height="67.333335876464844"/>

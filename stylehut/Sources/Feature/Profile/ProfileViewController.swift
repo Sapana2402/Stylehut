@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var logOut: UIButton!
     
+    @IBOutlet weak var userEmaail: UILabel!
     @IBOutlet weak var loginView: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,8 @@ class ProfileViewController: UIViewController {
            registerBtn.layer.borderColor = UIColor(red: 0xDE/255, green: 0xDE/255, blue: 0xDF/255, alpha: 1).cgColor
         registerBtn.layer.cornerRadius = 10
         NotificationCenter.default.addObserver(self, selector: #selector(handleBtnNotification), name: Notification.Name("UserDidLoginOrRegister"), object: nil)
+        print("AuthManager.shared.email",AuthManager.shared.email)
+        userEmaail.text = AuthManager.shared.email
     }
     
     @objc func handleBtnNotification() {
@@ -40,15 +43,17 @@ class ProfileViewController: UIViewController {
     
     
     @IBAction func handleLogOut(_ sender: UIButton) {
-        AuthManager.shared.token = nil
-        UserDefaults.standard.removeObject(forKey: "userToken")
-        UserDefaults.standard.synchronize()
+        LoaderView.shared.show()
+        AuthManager.shared.handleLogout()
         handleBtn()
+        LoaderView.shared.hide()
     }
     
     func handleBtn() {
         let isLoggedIn = AuthManager.shared.token != nil
+        userEmaail.text = AuthManager.shared.email
         loginView.isHidden = isLoggedIn
+        userEmaail.isHidden = !isLoggedIn
         logOut.isHidden = !isLoggedIn
 
     }

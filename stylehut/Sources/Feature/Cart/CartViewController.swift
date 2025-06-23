@@ -15,6 +15,25 @@ class CartViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         LoaderView.shared.show()
+        if !AuthManager.shared.isUserLoggedIn() {
+            LoaderView.shared.hide()
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Login Required", message: "", preferredStyle: .alert)
+                          self.present(alert, animated: true) {
+                              alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                                  self.dismiss(animated: true, completion: nil)
+                              }))
+                          }
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.configure()
+            }
+        }
+    
+    }
+
+    func configure()  {
         self.navigationItem.hidesBackButton = false
         cartListTabelView.register(UINib(nibName: k.cartScreen.cartTableViewCell, bundle: nil), forCellReuseIdentifier: k.cartScreen.cartTableViewCell)
         cartListTabelView.isScrollEnabled = false
@@ -25,13 +44,12 @@ class CartViewController: UIViewController, UITableViewDelegate,UITableViewDataS
                 self.cartListTabelView.reloadData()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     self.cartListTabelView.layoutIfNeeded()
-                    self.cartHeight.constant = self.cartListTabelView.contentSize.height
+                    self.cartHeight.constant = self.cartListTabelView.contentSize.height * 1.2
                     LoaderView.shared.hide()
                 }
             }
         }
     }
-
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

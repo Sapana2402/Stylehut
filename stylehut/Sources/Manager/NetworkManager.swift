@@ -100,6 +100,7 @@ class NetworkManager {
                     AuthManager.shared.token = decoded.token
                                     completion(true, "")
                     UserDefaults.standard.set(decoded.token, forKey: "userToken")
+                    UserDefaults.standard.set(email, forKey: "userEmail")
                     
                 }else{
                     completion(false, "Failed with status code: \(httpResponse.statusCode)")

@@ -30,6 +30,7 @@ class ViewController: UIViewController {
     let product = ProductViewNodel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        LoaderView.shared.show()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         loadAssets()
         autoSlider.delegate = self
@@ -116,6 +117,7 @@ class ViewController: UIViewController {
                                   self.trendingProductCollectionView.reloadData()
                         self.trendingProductCollectionView.layoutIfNeeded() // Ensure layout is calculated
                                         self.trendingCollectionHeight.constant = self.trendingProductCollectionView.collectionViewLayout.collectionViewContentSize.height
+                        LoaderView.shared.hide()
                               }
 
                 }

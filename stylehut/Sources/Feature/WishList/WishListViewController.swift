@@ -43,6 +43,7 @@ class WishListViewController: UIViewController, UICollectionViewDelegate,UIColle
 
     
     func configure()  {
+        LoaderView.shared.show()
         DispatchQueue.main.async {
             self.wishListCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
             self.wishListCollectionView.register(UINib(nibName: k.wishListScreen.wishListCollectionViewCellIdentifier, bundle: nil), forCellWithReuseIdentifier: k.wishListScreen.wishListCollectionViewCellIdentifier)
@@ -51,6 +52,7 @@ class WishListViewController: UIViewController, UICollectionViewDelegate,UIColle
             await wishListViewModel.getWishList()
             DispatchQueue.main.async {
                 self.wishListCollectionView.reloadData()
+                LoaderView.shared.hide()
             }
         }
     }

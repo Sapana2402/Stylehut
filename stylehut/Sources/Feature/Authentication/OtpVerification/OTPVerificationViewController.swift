@@ -57,8 +57,10 @@ class OTPVerificationViewController: UIViewController,UITextFieldDelegate {
 
     func submitOTP() {
         let otp = "\(otpFieldOne.text ?? "")\(otpFieldTwo.text ?? "")\(otpFieldThree.text ?? "")\(otpFieldFour.text ?? "")"
+        LoaderView.shared.show()
         Task {
             await viewModel.otpAuthentication(email: email!, otp: String(otp)) { checkResponse in
+                LoaderView.shared.hide()
                 if checkResponse == true {
                     NotificationCenter.default.post(name: Notification.Name("UserDidLoginOrRegister"), object: nil)
                     DispatchQueue.main.async {
