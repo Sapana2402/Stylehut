@@ -24,7 +24,7 @@ class SubCategoryTypeViewModel {
 
     
     func getProducts(selectedCategoryId:Int,selectedSubCategoryId: Int,selectedSubCategoryTypeId:Int,compelation: @escaping () -> Void) async {
-        let url = "https://stylehut-be.vercel.app/api/product?page=1&pageSize=10&sortBy=create_at&order=desc&minPrice=0&maxPrice=\(activeFilter.maxPrice)&category_id=\(selectedCategoryId)&sub_category_id=\(selectedSubCategoryId)&sub_category_type_id=\(selectedSubCategoryTypeId)&brand_id=\(activeFilter.selectedBrandId ?? 0)&minDiscount=0&maxDiscount=\(activeFilter.maxDiscount)"
+        let url = "\(k.urls.baseURL)/product?page=1&pageSize=10&sortBy=create_at&order=desc&minPrice=0&maxPrice=\(activeFilter.maxPrice)&category_id=\(selectedCategoryId)&sub_category_id=\(selectedSubCategoryId)&sub_category_type_id=\(selectedSubCategoryTypeId)&brand_id=\(activeFilter.selectedBrandId ?? 0)&minDiscount=0&maxDiscount=\(activeFilter.maxDiscount)"
         print("url",url)
         await NetworkManager.getSubCategoriesTypeList(urlString: url) { product, error in
            if let products = product {

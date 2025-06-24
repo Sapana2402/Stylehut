@@ -13,7 +13,7 @@ class WishListViewModel {
     var wishListData : wishlistData?
 
     func getWishList() async {
-        let url = "https://stylehut-be.vercel.app/api/wishlist?page=1&pageSize=100"
+        let url = "\(k.urls.baseURL)/wishlist?page=1&pageSize=100"
         if let brandList = await NetworkManager.getWishListedProduct(urlString: url) {
             self.wishListData = brandList
             print("Wishlist data", brandList)
