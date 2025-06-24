@@ -13,7 +13,7 @@ class CartViewModels {
     func getCartList() async {
         let url = "https://stylehut-be.vercel.app/api/cart/user?page=1&pageSize=100"
         
-        if let handleResponse = await NetworkManager.getCartProduct(urlSting: url){
+        if let handleResponse = await NetworkManager.getCartProduct(urlString: url){
             cartDetails = handleResponse
         }else{
             cartDetails = nil

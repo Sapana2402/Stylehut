@@ -15,7 +15,7 @@ class CategoriesViewModel {
     
     func getCategories(compelation: @escaping () -> Void) async {
         let url = k.urls.getCategories
-        await NetworkManager.getCategories(urlSting: url) { product, error in
+        await NetworkManager.getCategories(urlString: url) { product, error in
            if let categories = product {
                self.categoriesData = categories
                print("self.categoriesData",self.categoriesData)

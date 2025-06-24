@@ -12,7 +12,7 @@ class ProductDetailsViewModel {
     
     func getProducts(productId: Int) async {
         let url = "\(k.urls.baseURL)/product/\(productId)"
-        if let products = await NetworkManager.getProductDetails(urlSting: url) {
+        if let products = await NetworkManager.getProductDetails(urlString: url) {
             self.productData = products
         } else {
             print("Failed to load product details")
