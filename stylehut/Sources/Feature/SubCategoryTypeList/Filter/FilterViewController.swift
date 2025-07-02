@@ -82,13 +82,21 @@ class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = brandTableView.dequeueReusableCell(withIdentifier: k.SubCategoryTypeScreen.brandTableViewCell, for: indexPath) as! BrandTableViewCell
-        cell.brandName.text = subCategoryTypeViewModel.brandsData?.items[indexPath.row].name ?? ""
+        let brand = subCategoryTypeViewModel.brandsData?.items[indexPath.row]
+        let isSelected = brand?.id == selectedBrandId
+
+        cell.brandName.text = brand?.name ?? ""
+        cell.checkBox.isUserInteractionEnabled = false
+
+        cell.checkBox.setImage(UIImage(systemName: isSelected ? "checkmark.square.fill" : "square"), for: .normal)
+
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedBrand = subCategoryTypeViewModel.brandsData?.items[indexPath.row]
         selectedBrandId = selectedBrand?.id
+        tableView.reloadData()
     }
 
 }
