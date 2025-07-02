@@ -4,7 +4,7 @@ https://github.com/user-attachments/assets/785c4fb2-9b9d-4024-ae8e-ca29b56f6edf
 
 iOS Development Concepts & Technologies Used in StyleHut
 
-1. Swift Programming Language
+#### 1. Swift Programming Language
 •  Swift 5.0 with modern language features
 •  Async/Await for asynchronous programming
 •  Closures and completion handlers
@@ -12,7 +12,7 @@ iOS Development Concepts & Technologies Used in StyleHut
 •  Protocols and Delegates implementation
 •  Error Handling with do-catch blocks
 
-2. Architecture & Design Patterns
+#### 2. Architecture & Design Patterns
 
 #### MVVM Architecture (Model-View-ViewModel)
 •  Models: ProductModel, CartModel, WishListModel, ProductDetailsModel
@@ -28,7 +28,7 @@ iOS Development Concepts & Technologies Used in StyleHut
 •  UICollectionViewDelegate, UICollectionViewDataSource
 •  UIScrollViewDelegate for auto-slider functionality
 
-3. UIKit Framework Components
+#### 3. UIKit Framework Components
 
 #### Navigation & View Controllers
 •  UIViewController base class implementation
@@ -56,7 +56,7 @@ iOS Development Concepts & Technologies Used in StyleHut
 •  Interface Builder constraints
 •  Dynamic height calculations for collection views
 
-4. Networking & API Integration
+#### 4. Networking & API Integration
 
 #### URLSession Framework
 •  RESTful API consumption
@@ -73,7 +73,7 @@ iOS Development Concepts & Technologies Used in StyleHut
 •  Cart and wishlist operations
 •  Product search and filtering
 
-5. Data Management
+#### 5. Data Management
 
 #### UserDefaults
 •  Token storage for authentication
@@ -89,7 +89,7 @@ iOS Development Concepts & Technologies Used in StyleHut
 •  Custom model structures for API responses
 •  Type-safe data parsing
 
-6. Third-Party Libraries
+#### 6. Third-Party Libraries
 
 #### Kingfisher Framework
 •  Image Caching and loading from URLs
@@ -97,7 +97,7 @@ iOS Development Concepts & Technologies Used in StyleHut
 •  Memory Management for images
 •  Placeholder and error handling
 
-7. User Interface & Experience
+#### 7. User Interface & Experience
 
 #### Custom UI Components
 •  Rounded Corners with CALayer properties
@@ -116,7 +116,7 @@ iOS Development Concepts & Technologies Used in StyleHut
 •  Collection View Flow Layout customization
 •  Constraint-based responsive layouts
 
-8. Authentication & Security
+#### 8. Authentication & Security
 
 #### Email Validation
 •  Regular Expression (NSPredicate) validation
@@ -131,7 +131,7 @@ iOS Development Concepts & Technologies Used in StyleHut
 •  Two-factor authentication implementation
 •  Secure user verification process
 
-9. Advanced iOS Features
+#### 9. Advanced iOS Features
 
 #### Safari Services
 •  SFSafariViewController for in-app web browsing
@@ -147,7 +147,7 @@ iOS Development Concepts & Technologies Used in StyleHut
 •  Error Messaging system
 •  Reusable alert components
 
-10. Code Organization & Best Practices
+#### 10. Code Organization & Best Practices
 
 #### Feature-Based Architecture
 •  Modular code organization by features
@@ -164,7 +164,7 @@ iOS Development Concepts & Technologies Used in StyleHut
 •  Proper Cleanup of timers and observers
 •  ARC (Automatic Reference Counting) compliance
 
-11. Animation & Visual Effects
+#### 11. Animation & Visual Effects
 •  UIView Animations for smooth transitions
 •  GIF Animation support with Kingfisher
 •  Page Control animations
