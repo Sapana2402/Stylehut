@@ -38,6 +38,7 @@ class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDa
                  discount.setValue(Float(filter.maxDiscount), animated: false)
                  handleMaxPrice.setValue(Float(filter.maxPrice), animated: false)
                  discountValue.text = "\(filter.maxDiscount)%"
+            price.text = "\(filter.maxPrice)%"
              }
         
         Task{

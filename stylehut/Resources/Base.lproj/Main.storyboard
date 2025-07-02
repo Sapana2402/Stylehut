@@ -1047,7 +1047,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeE-fQ-5dv">
-                                                                    <rect key="frame" x="16" y="5" width="50" height="50.333333333333336"/>
+                                                                    <rect key="frame" x="0.0" y="5" width="50" height="50.333333333333336"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="50" id="R0u-z6-Dni"/>
                                                                         <constraint firstAttribute="width" constant="50" id="xdT-Uo-XGE"/>
@@ -1056,8 +1056,8 @@
                                                                     <state key="normal" title="Button"/>
                                                                     <buttonConfiguration key="configuration" style="plain" image="square" catalog="system"/>
                                                                 </button>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ms8-BC-obm">
-                                                                    <rect key="frame" x="71" y="5" width="283" height="50.333333333333336"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ms8-BC-obm">
+                                                                    <rect key="frame" x="55" y="5" width="315" height="50.333333333333336"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -1067,9 +1067,9 @@
                                                                 <constraint firstItem="Ms8-BC-obm" firstAttribute="top" secondItem="AiE-Z0-gLn" secondAttribute="top" constant="5" id="C2m-Nw-qD4"/>
                                                                 <constraint firstAttribute="bottom" secondItem="SeE-fQ-5dv" secondAttribute="bottom" constant="5" id="EaD-Rx-7hg"/>
                                                                 <constraint firstItem="Ms8-BC-obm" firstAttribute="leading" secondItem="SeE-fQ-5dv" secondAttribute="trailing" constant="5" id="Frn-Pl-xLe"/>
-                                                                <constraint firstAttribute="trailing" secondItem="Ms8-BC-obm" secondAttribute="trailing" constant="16" id="LwW-vg-Ygw"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Ms8-BC-obm" secondAttribute="trailing" id="LwW-vg-Ygw"/>
                                                                 <constraint firstItem="SeE-fQ-5dv" firstAttribute="top" secondItem="AiE-Z0-gLn" secondAttribute="top" constant="5" id="QuZ-eC-MHH"/>
-                                                                <constraint firstItem="SeE-fQ-5dv" firstAttribute="leading" secondItem="AiE-Z0-gLn" secondAttribute="leading" constant="16" id="pWb-Ta-wts"/>
+                                                                <constraint firstItem="SeE-fQ-5dv" firstAttribute="leading" secondItem="AiE-Z0-gLn" secondAttribute="leading" id="pWb-Ta-wts"/>
                                                                 <constraint firstAttribute="bottom" secondItem="Ms8-BC-obm" secondAttribute="bottom" constant="5" id="sq4-BF-nI5"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
@@ -2114,7 +2114,7 @@
             <color red="0.9570000171661377" green="0.9570000171661377" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="dotColor">
-            <color red="0.9570000171661377" green="0.9570000171661377" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34901960780000002" green="0.34901960780000002" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="mainAppColor">
             <color red="0.93300002813339233" green="0.37299999594688416" blue="0.45100000500679016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
