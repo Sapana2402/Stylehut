@@ -16,6 +16,12 @@ class CategoriesViewController: UIViewController {
     var subCategoreisTypeData : [SubCategory] = []
     
     let categorisViewModel = CategoriesViewModel()
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: any UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: nil) { _ in
+            self.subCategoriesList.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         LoaderView.shared.show()
