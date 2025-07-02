@@ -44,7 +44,7 @@ class CartViewController: UIViewController, UITableViewDelegate,UITableViewDataS
                 self.cartListTabelView.reloadData()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     self.cartListTabelView.layoutIfNeeded()
-                    self.cartHeight.constant = self.cartListTabelView.contentSize.height * 1.2
+                    self.cartHeight.constant = self.cartListTabelView.contentSize.height * 1.4
                     LoaderView.shared.hide()
                 }
             }

@@ -188,10 +188,10 @@ extension ProductDescriptionViewController: UICollectionViewDelegateFlowLayout, 
             
             if selectedSizeIndex == indexPath {
                 cell.circularView.backgroundColor = UIColor.lightGray
-                  cell.label.textColor = .white
+//                  cell.label.textColor = .white
               } else {
                   cell.circularView.backgroundColor = .clear
-                  cell.label.textColor = .black
+//                  cell.label.textColor = .black
               }
             return cell
         }else if collectionView == similarProducts{
