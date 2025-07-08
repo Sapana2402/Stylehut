@@ -123,9 +123,7 @@ iOS Development Concepts & Technologies Used in StyleHut
 •  Real-time input validation
 
 #### Token-Based Authentication
-•  JWT Token management
 •  Authorization Headers for API requests
-•  Session Management with UserDefaults
 
 #### OTP Verification
 •  Two-factor authentication implementation
